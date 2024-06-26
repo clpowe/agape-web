@@ -1,10 +1,6 @@
 <template>
 	<main>
-		<section>
-			<h1>Welcome to Agape Christian Bar Prep</h1>
-			<p>Personalized service with proven results</p>
-			<a href="">discover more</a>
-		</section>
+		<MainHero />
 		<ContentSection
 			pretext="The Agape Way"
 			title="How Our Program Is Different"
@@ -18,7 +14,7 @@
 			<a href="">Learn more about Agape</a>
 		</ContentSection>
 
-		<section>
+		<!-- <section>
 			<ul
 				><li
 					><h3>Law School</h3>
@@ -45,10 +41,25 @@
 				>
 				<a href="">learn more about our law school prep</a>
 			</ul>
-		</section>
+		</section> -->
 	</main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+	useHead({
+		title: 'Agape Christian Bar Prep'
+	})
 
-<style scoped></style>
+	import image from '../assets/HomeHero.png'
+</script>
+
+<style scoped>
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.hero {
+		display: grid;
+	}
+</style>

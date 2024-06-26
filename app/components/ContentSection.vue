@@ -1,7 +1,8 @@
 <template>
 	<section>
 		<h2>
-			<span>{{ pretext }}</span>
+			<span>{{ pretext }}</span
+			><br />
 			{{ title }}
 		</h2>
 		<p>{{ text }}</p>
