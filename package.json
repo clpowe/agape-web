@@ -19,6 +19,7 @@
     "@nuxt/image": "latest",
     "@nuxt/test-utils": "^3.13.1",
     "@vue/test-utils": "^2.4.6",
+    "@vueuse/nuxt": "latest",
     "happy-dom": "^14.12.3",
     "playwright-core": "^1.45.0",
     "vitest": "^1.6.0"

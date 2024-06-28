@@ -10,13 +10,28 @@
 	:root {
 		--red: oklch(41.66% 0.165 26.64);
 		--blue: oklch(30.59% 0.056 230.7);
+
+		--font-xs: 0.64rem;
+		--font-s: 0.833rem;
+		--font-m: 1rem;
+		--font-l: 1.2rem;
+		--font-xl: 1.44rem;
+		--font-2xl: 1.728rem;
+		--font-3xl: 2.074rem;
+		--font-4xl: 2.488rem;
+		--font-5xl: 2.986rem;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
 	}
 
 	h2 {
 		font-family: 'Gilda Display';
 		font-weight: 400;
 		text-transform: uppercase;
-		font-size: clamp(2.5rem, 1px + 10vw, 3rem);
+		font-size: clamp(var(--font-4xl), 1px + 10vw, var(--font-5xl));
 		line-height: 0.9em;
 		margin: 0;
 
