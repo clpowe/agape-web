@@ -7,7 +7,44 @@
 </template>
 
 <style>
+	*,
+	*::after,
+	*::before {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	button {
+		font: inherit;
+		cursor: pointer;
+		border: none;
+	}
+
 	:root {
+		--_hue: 24.64;
+		--_easing: cubic-bezier(0.66, -0.2, 0.27, 1.15);
+		--_transitonSpeed: 400ms;
+
+		/* light */
+		--bg--light: 96.12% 0 var(--_hue);
+		--txt--light: 10.82% 0 var(--_hue);
+		--accent--light: 41.66% 0.165 var(--_hue);
+		--secondary--light: 30.59% 0.056 calc(var(--_hue) + 206.06);
+
+		/* dark */
+		--bg--dark: 10.82% 0 var(--_hue);
+		--txt--dark: 96.12% 0 var(--_hue);
+		--accent--dark: 41.66% 0.165 var(--_hue);
+		--secondary--dark: 30.59% 0.056 calc(var(--_hue) + 206.06);
+
+		/* defaults */
+		--bg: var(--bg--light);
+		--txt: var(--txt--light);
+		--accent: var(--accent--light);
+		--secondary: var(--secondary--light);
+		color-scheme: light;
+
 		--red: oklch(41.66% 0.165 26.64);
 		--blue: oklch(30.59% 0.056 230.7);
 
@@ -22,10 +59,20 @@
 		--font-5xl: 2.986rem;
 	}
 
-	*,
-	* > * {
-		margin: 0;
-		box-sizing: border-box;
+	/* @media (prefers-color-scheme: dark) {
+		:root {
+			--bg: var(--bg--dark);
+			--txt: var(--txt--dark);
+			--accent: var(--accent--dark);
+			--secondary: var(--secondary--dark);
+			color-scheme: dark;
+		}
+	} */
+
+	@media (prefers-reduced-motion: reduced) {
+		:root {
+			--_transitionSpeed: 0ms;
+		}
 	}
 
 	html {
@@ -35,6 +82,9 @@
 	body {
 		margin: 0;
 		padding: 0;
+		background-color: oklch(var(--bg));
+		color: oklch(var(--txt));
+		font-family: 'Inter';
 	}
 
 	h2 {

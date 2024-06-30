@@ -50,27 +50,34 @@
 	<header>
 		<nav ref="navBar" class="main-nav" :class="{ 'scrolled-nav': y > 0 }">
 			<ul role="menubar">
-				<li role="none" class="logo"><AgapeLogo /> </li>
+				<li role="none" class="logo" tabindex="1"><AgapeLogo /> </li>
 
 				<template v-if="!isMobile">
 					<li role="none" v-for="{ name, link, id } in navigation"
-						><NuxtLink role="menuitem" :key="id" :to="link">{{
+						><NuxtLink role="menuitem" :key="id" :to="link" class="nav-link">{{
 							name
 						}}</NuxtLink></li
 					>
 				</template>
 
+				<li role="none" v-if="!isMobile">
+					<AppButton role="menuitem" link="/">Pay Bill</AppButton>
+				</li>
+				<li role="none" v-if="!isMobile">
+					<AppButton role="menuitem" link="/" secondary>team prayer</AppButton>
+				</li>
+
 				<li role="none" v-if="isMobile">
-					<button class="btn menu_open" @click="openNav">
+					<AppButton ghost @click="openNav">
 						menu <Bars class="bars" />
-					</button>
+					</AppButton>
 				</li>
 			</ul>
 		</nav>
 		<dialog v-if="isMobile" ref="mobileMenu" @clickoutside="closeNav">
-			<button class="btn menu_close" @click="closeNav">
+			<AppButton @click="closeNav" ghost>
 				close <Bars class="bars" />
-			</button>
+			</AppButton>
 			<nav>
 				<ul>
 					<li role="none" v-for="{ name, link, id } in navigation"
@@ -78,6 +85,12 @@
 							name
 						}}</NuxtLink></li
 					>
+					<li role="none">
+						<NuxtLink role="menuitem" to="/">Pay Bill</NuxtLink>
+					</li>
+					<li role="none">
+						<NuxtLink role="menuitem" to="/">team prayer</NuxtLink>
+					</li>
 				</ul>
 			</nav>
 		</dialog>
@@ -95,6 +108,8 @@
 		width: 100%;
 		margin: 0;
 		padding: 0;
+		gap: 1rem;
+		font-weight: 300;
 		justify-content: space-between;
 		padding-block: 1rem;
 		list-style-type: none;
@@ -111,7 +126,7 @@
 		}
 	}
 
-	.btn {
+	.menu-btn {
 		border: none;
 		margin: 0;
 		padding: 0;
@@ -171,6 +186,46 @@
 		animation: fadeIn var(--timing) ease-in-out;
 	}
 
+	.nav-link {
+		display: block;
+		overflow: wrap;
+		word-break: initial;
+		flex-direction: row;
+		height: 100%;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Inter';
+		font-size: var(--font-s);
+		font-weight: initial;
+		line-height: 20px;
+		color: white;
+		text-transform: uppercase;
+		text-decoration: none;
+
+		&:hover::after {
+			content: '';
+			position: absolute;
+			top: -24px;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background-color: var(--red);
+		}
+
+		&.btn {
+			background-color: var(--red);
+		}
+		&.btn:hover::after {
+			content: '';
+		}
+	}
+
+	.li {
+		display: flex;
+		align-items: center;
+	}
+
 	@keyframes slideIn {
 		from {
 			transform: translateY(-100%);
@@ -205,5 +260,8 @@
 		to {
 			opacity: 0;
 		}
+	}
+
+	@media (min-width: 768px) {
 	}
 </style>
