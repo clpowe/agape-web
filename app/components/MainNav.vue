@@ -1,71 +1,209 @@
-<template>
-	<nav class="main-nav">
-		<ul role="menubar">
-			<li role="none"><NuxtLink role="menuitem" to="/">Home</NuxtLink></li>
-			<li role="none"
-				><NuxtLink role="menuitem" to="/about">About</NuxtLink></li
-			>
-			<li role="none" class="logo"><AgapeLogo /> </li>
-			<li role="none"
-				><NuxtLink role="menuitem" to="/contact">Contact</NuxtLink></li
-			>
-			<li role="none"
-				><NuxtLink role="menuitem" to="/services">Services</NuxtLink></li
-			>
-		</ul>
-	</nav>
-</template>
-
 <script setup lang="ts">
 	import AgapeLogo from './AgapeLogo.vue'
+	import Bars from '../assets/icons/menu-bars.vue'
+
+	const menuHeight = defineModel()
+
+	const { x, y } = useWindowScroll()
+
+	const { isMobile } = useBreakpoints()
+	const navBar = ref(null)
+	const { height } = useElementSize(navBar)
+	const mobileMenu = ref<HTMLDialogElement>(null)
+
+	watchEffect(() => {
+		menuHeight.value = height.value
+	})
+
+	const navigation = ref([
+		{
+			id: '1',
+			name: 'Home',
+			link: '/'
+		},
+		{
+			id: '2',
+			name: 'About',
+			link: '/about'
+		},
+		{
+			id: '3',
+			name: 'Contact',
+			link: '/contact'
+		},
+		{
+			id: '4',
+			name: 'Services',
+			link: '/services'
+		}
+	])
+
+	function openNav() {
+		mobileMenu.value.showModal()
+	}
+	function closeNav() {
+		mobileMenu.value.close()
+	}
 </script>
 
-<style>
-	.main-nav {
-		position: fixed;
+<template>
+	<header>
+		<nav ref="navBar" class="main-nav" :class="{ 'scrolled-nav': y > 0 }">
+			<ul role="menubar">
+				<li role="none" class="logo"><AgapeLogo /> </li>
+
+				<template v-if="!isMobile">
+					<li role="none" v-for="{ name, link, id } in navigation"
+						><NuxtLink role="menuitem" :key="id" :to="link">{{
+							name
+						}}</NuxtLink></li
+					>
+				</template>
+
+				<li role="none" v-if="isMobile">
+					<button class="btn menu_open" @click="openNav">
+						menu <Bars class="bars" />
+					</button>
+				</li>
+			</ul>
+		</nav>
+		<dialog v-if="isMobile" ref="mobileMenu" @clickoutside="closeNav">
+			<button class="btn menu_close" @click="closeNav">
+				close <Bars class="bars" />
+			</button>
+			<nav>
+				<ul>
+					<li role="none" v-for="{ name, link, id } in navigation"
+						><NuxtLink role="menuitem" :key="id" :to="link">{{
+							name
+						}}</NuxtLink></li
+					>
+				</ul>
+			</nav>
+		</dialog>
+	</header>
+</template>
+
+<style scoped>
+	nav {
 		width: 100%;
-		background-color: hsla(0, 0%, 100%, 0);
-		animation-timeline: view();
-		animation-name: addBg;
+		padding-inline: 1rem;
+	}
 
-		ul {
-			list-style-type: none;
-			display: flex;
-			width: max-content;
-			margin-inline: auto;
-			align-items: center;
-			gap: 3rem;
+	ul {
+		display: flex;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		justify-content: space-between;
+		padding-block: 1rem;
+		list-style-type: none;
+		align-items: center;
+	}
+
+	.logo {
+		order: 0;
+		margin-right: auto;
+
+		svg {
+			width: fit-content;
+			height: 60px;
 		}
+	}
 
-		.logo {
-			justify-self: center;
+	.btn {
+		border: none;
+		margin: 0;
+		padding: 0;
+		background: none;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 
-			svg {
-				width: 60px;
-				animation-timeline: view();
-				animation-name: shrink;
-			}
-		}
-
-		a {
-			text-decoration: none;
+		&.menu_open {
 			color: white;
-			text-transform: uppercase;
-			font-family: 'Inter';
-			font-size: 0.75rem;
+		}
+
+		&.menu_close {
+			color: black;
 		}
 	}
 
-	@keyframes addBg {
-		to {
-			background-color: hsla(0, 0%, 100%, 1);
-			opacity: 0.5;
+	.bars {
+		height: 2rem;
+	}
+
+	dialog {
+		--timing: 0.3s;
+
+		width: 100%;
+		max-width: 100vw;
+		animation: slideOut var(--timing) ease-in-out;
+		transition:
+			display var(--timing) allow-discrete,
+			overlay var(--timing) allow-discrete,
+			opacity var(--timing) allow-discrete;
+
+		&[open] {
+			animation: slideIn var(--timing) ease-in-out;
+		}
+
+		nav > ul {
+			display: grid;
+			gap: 2rem;
 		}
 	}
 
-	@keyframes shrink {
+	::backdrop {
+		--timing: 0.3s;
+
+		transition:
+			display var(--timing) allow-discrete,
+			overlay var(--timing) allow-discrete,
+			opacity var(--timing) allow-discrete;
+		opacity: 0;
+		animation: fadeOut var(--timing) ease-in-out;
+	}
+
+	[open]::backdrop {
+		background-color: rgb(0 0 0 / 50%);
+		opacity: 1;
+		animation: fadeIn var(--timing) ease-in-out;
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateY(-100%);
+		}
 		to {
-			width: 90px;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes slideOut {
+		from {
+			transform: translateY(0);
+		}
+		to {
+			transform: translateY(-100%);
+		}
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
 		}
 	}
 </style>

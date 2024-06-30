@@ -22,6 +22,16 @@
 		--font-5xl: 2.986rem;
 	}
 
+	*,
+	* > * {
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scrollbar-gutter: stable;
+	}
+
 	body {
 		margin: 0;
 		padding: 0;

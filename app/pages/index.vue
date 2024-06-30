@@ -50,6 +50,8 @@
 		title: 'Agape Christian Bar Prep'
 	})
 
+	const heroEl = ref(null)
+
 	import image from '../assets/HomeHero.png'
 </script>
 
