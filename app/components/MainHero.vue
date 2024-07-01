@@ -1,11 +1,10 @@
 <script setup lang="ts">
 	import image from '../assets/HomeHero.png'
-	const menubarheight = ref()
+
+	const menubarheight = inject('menubarheight')
 </script>
 
 <template>
-	<MainNav v-model="menubarheight" />
-
 	<section class="hero">
 		<div class="content">
 			<p>Welcome to </p>

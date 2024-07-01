@@ -1,6 +1,6 @@
 <template>
-	<main>
-		<MainHero />
+	<main class="content-grid">
+		<MainHero class="full-width" />
 		<ContentSection
 			pretext="The Agape Way"
 			title="How Our Program Is Different"
@@ -10,11 +10,12 @@
 				uniquely designed to meet the individual spiritual, mental, emotional
 				and academic needs of students while simultaneously empowering them to
 				conquer the bar exam and achieve their dreams of becoming attorneys."
+			class="breakout"
 		>
 			<a href="">Learn more about Agape</a>
 		</ContentSection>
 
-		<!-- <section>
+		<section class="full-width">
 			<ul
 				><li
 					><h3>Law School</h3>
@@ -41,7 +42,7 @@
 				>
 				<a href="">learn more about our law school prep</a>
 			</ul>
-		</section> -->
+		</section>
 	</main>
 </template>
 

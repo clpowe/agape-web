@@ -2,14 +2,14 @@
 	import AgapeLogo from './AgapeLogo.vue'
 	import Bars from '../assets/icons/menu-bars.vue'
 
-	const menuHeight = defineModel()
-
 	const { x, y } = useWindowScroll()
 
 	const { isMobile } = useBreakpoints()
+	const mobileMenu = ref<HTMLDialogElement>(null)
+
 	const navBar = ref(null)
 	const { height } = useElementSize(navBar)
-	const mobileMenu = ref<HTMLDialogElement>(null)
+	const menuHeight = defineModel()
 
 	watchEffect(() => {
 		menuHeight.value = height.value
@@ -38,58 +38,72 @@
 		}
 	])
 
+	const expanded = ref(false)
+
 	function openNav() {
+		expanded.value = true
 		mobileMenu.value.showModal()
 	}
 	function closeNav() {
+		expanded.value = false
 		mobileMenu.value.close()
 	}
 </script>
 
 <template>
-	<header>
-		<nav ref="navBar" class="main-nav" :class="{ 'scrolled-nav': y > 0 }">
-			<ul role="menubar">
-				<li role="none" class="logo" tabindex="1"><AgapeLogo /> </li>
+	<header class="">
+		<nav
+			aria-label="Main"
+			ref="navBar"
+			class="main-nav breakout"
+			:class="{ 'scrolled-nav': y > 0 }"
+		>
+			<ul role="list">
+				<li class="logo"><AgapeLogo /> </li>
 
 				<template v-if="!isMobile">
-					<li role="none" v-for="{ name, link, id } in navigation"
-						><NuxtLink role="menuitem" :key="id" :to="link" class="nav-link">{{
+					<li v-for="{ name, link, id } in navigation"
+						><NuxtLink :key="id" :to="link" class="nav-link">{{
 							name
 						}}</NuxtLink></li
 					>
 				</template>
 
-				<li role="none" v-if="!isMobile">
-					<AppButton role="menuitem" link="/">Pay Bill</AppButton>
+				<li v-if="!isMobile">
+					<AppButton link="/">Pay Bill</AppButton>
 				</li>
-				<li role="none" v-if="!isMobile">
-					<AppButton role="menuitem" link="/" secondary>team prayer</AppButton>
+				<li v-if="!isMobile">
+					<AppButton link="/" secondary>team prayer</AppButton>
 				</li>
 
-				<li role="none" v-if="isMobile">
-					<AppButton ghost @click="openNav">
+				<li v-if="isMobile">
+					<AppButton
+						ref="mobileMenuControl"
+						:expanded="expanded"
+						ghost
+						@click="openNav"
+					>
 						menu <Bars class="bars" />
 					</AppButton>
 				</li>
 			</ul>
 		</nav>
 		<dialog v-if="isMobile" ref="mobileMenu" @clickoutside="closeNav">
-			<AppButton @click="closeNav" ghost>
+			<AppButton @click="closeNav" ghost class="dark close-btn">
 				close <Bars class="bars" />
 			</AppButton>
-			<nav>
-				<ul>
-					<li role="none" v-for="{ name, link, id } in navigation"
-						><NuxtLink role="menuitem" :key="id" :to="link">{{
+			<nav aria-label="Main">
+				<ul role="list">
+					<li v-for="{ name, link, id } in navigation"
+						><NuxtLink class="mobile-nav-link" :key="id" :to="link">{{
 							name
 						}}</NuxtLink></li
 					>
-					<li role="none">
-						<NuxtLink role="menuitem" to="/">Pay Bill</NuxtLink>
+					<li>
+						<AppButton link="/">Pay Bill</AppButton>
 					</li>
-					<li role="none">
-						<NuxtLink role="menuitem" to="/">team prayer</NuxtLink>
+					<li>
+						<AppButton link="/" secondary>team prayer</AppButton>
 					</li>
 				</ul>
 			</nav>
@@ -98,9 +112,14 @@
 </template>
 
 <style scoped>
+	header {
+		z-index: 100;
+		//background-color: oklch(var(--bg--dark));
+	}
 	nav {
 		width: 100%;
 		padding-inline: 1rem;
+		z-index: 100;
 	}
 
 	ul {
@@ -164,8 +183,24 @@
 		}
 
 		nav > ul {
-			display: grid;
+			display: flex;
 			gap: 2rem;
+			width: 100%;
+			flex-direction: column;
+		}
+
+		ul li:has(.mobile-nav-link) {
+			height: 100%;
+			border-bottom: 1px solid red;
+		}
+
+		li {
+			width: 100%;
+		}
+
+		.close-btn {
+			margin-left: auto;
+			margin-bottom: 1rem;
 		}
 	}
 
@@ -219,6 +254,27 @@
 		&.btn:hover::after {
 			content: '';
 		}
+	}
+
+	.mobile-nav-link {
+		display: block;
+		overflow: wrap;
+		word-break: initial;
+		flex-direction: row;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Inter';
+		font-size: var(--font-s);
+		font-weight: initial;
+		line-height: 20px;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
+
+	.mobile-nav-link:nth-of-type(1) {
 	}
 
 	.li {

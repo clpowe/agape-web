@@ -9,6 +9,7 @@
 	<button
 		v-else
 		class="btn"
+		:aria-expanded="expanded ? expanded : 'false'"
 		:class="{ 'btn--secondary': secondary, 'btn--ghost': ghost }"
 		@click="$emit('event')"
 		><slot></slot
@@ -16,7 +17,12 @@
 </template>
 
 <script setup lang="ts">
-	defineProps<{ link?: string; secondary?: boolean; ghost?: boolean }>()
+	defineProps<{
+		link?: string
+		secondary?: boolean
+		ghost?: boolean
+		expanded?: boolean
+	}>()
 </script>
 
 <style scoped>
@@ -32,13 +38,8 @@
 		padding: 0.4em 1.4em;
 		border-radius: 0.2em;
 		text-transform: uppercase;
-		box-shadow:
-			0.05em 0.1em 0.9em oklch(var(--accent) / 0.3),
-			0 0 0 -0.1em oklch(var(--bg)),
-			0 0 0 -0.2em oklch(var(--accent));
-		transition:
-			box-shadow var(--_transitionSpeed) var(--_easing),
-			background-color var(--_transitionSpeed) var(--_easing);
+		border-radius: 50rem;
+		transition: background-color var(--_transitionSpeed) var(--_easing);
 	}
 
 	.btn--secondary {
@@ -47,8 +48,12 @@
 
 	.btn--ghost {
 		box-shadow: none;
-		background-color: transparent;
+		background-color: oklch(var(--bg) / 0.1);
 		color: oklch(var(--bg));
+	}
+
+	.dark {
+		color: oklch(var(--txt--light));
 	}
 
 	.btn :where(svg, img) {
@@ -61,16 +66,15 @@
 
 	.btn:where(:hover, :active) {
 		background-color: oklch(var(--accent) / 0.8);
-		box-shadow:
-			0 0 0 oklch(var(--accent) / 0.3),
-			0 0 0 -0.1em oklch(var(--bg)),
-			0 0 0 -0.2em oklch(var(--accent));
 	}
 
-	.btn:focus-visible,
-	.btn:focus {
+	.btn--ghost:where(:hover, :active) {
+		box-shadow: none;
+		background-color: oklch(var(--bg) / 0.4);
+	}
+
+	.btn:focus-visible {
 		outline: 0.2em solid oklch(var(--accent));
 		outline-offset: 0.2em;
-		box-shadow: 0 0 0 oklch(var(--accent) / 0.3);
 	}
 </style>
