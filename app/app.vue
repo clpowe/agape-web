@@ -23,6 +23,18 @@
 		box-sizing: border-box;
 	}
 
+	a {
+		display: block;
+		overflow: wrap;
+		word-break: initial;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		font-weight: initial;
+		line-height: 20px;
+		text-decoration: none;
+	}
+
 	button {
 		font: inherit;
 		cursor: pointer;
@@ -150,5 +162,19 @@
 		font-weight: 400;
 		font-size: 1rem;
 		line-height: 1.5em;
+	}
+
+	.vertical-line {
+		width: 2px;
+		height: 75px;
+		background-color: oklch(var(--txt));
+
+		&.light {
+			background-color: oklch(var(--txt--dark));
+		}
+
+		&.dark {
+			background-color: oklch(var(--txt--dark));
+		}
 	}
 </style>

@@ -5,7 +5,7 @@
 	const { x, y } = useWindowScroll()
 
 	const { isMobile } = useBreakpoints()
-	const mobileMenu = ref<HTMLDialogElement>(null)
+	const mobileMenu = ref<HTMLDialogElement | null>(null)
 
 	const navBar = ref(null)
 	const { height } = useElementSize(navBar)
@@ -43,11 +43,19 @@
 
 	function openNav() {
 		expanded.value = true
-		mobileMenu.value.showModal()
+		if (mobileMenu.value) {
+			mobileMenu.value.showModal()
+		} else {
+			console.error("Mobile menu doesn't exist")
+		}
 	}
 	function closeNav() {
 		expanded.value = false
-		mobileMenu.value.close()
+		if (mobileMenu.value) {
+			mobileMenu.value.close()
+		} else {
+			console.error("Mobile menu doesn't exist")
+		}
 	}
 
 	const router = useRouter()

@@ -7,11 +7,12 @@
 <template>
 	<section class="hero">
 		<div class="content">
+			<div class="vertical-line light"></div>
 			<p>Welcome to </p>
 			<h1>Agape Christian Bar Prep</h1>
 			<p>Personalized service with proven results</p>
-			<a href="">discover more</a>
 		</div>
+		<a href="">discover more</a>
 		<div class="image">
 			<img alt="Home Hero" height="100" :src="image" />
 		</div>
@@ -36,17 +37,27 @@
 			flex-direction: column;
 			grid-row: 1/-1;
 			width: 100%;
-			content: center;
 			color: white;
-			justify-content: center;
+			gap: 1.5rem;
+
+			justify-items: center;
+			font-family: 'Gilda Display';
 
 			h1 {
-				font-family: 'Gilda Display';
 				text-transform: uppercase;
-				font-size: var(--font-5xl);
+				font-size: 4rem;
+				line-height: 90%;
 				max-width: 18ch;
-				font-weight: 400;
 			}
+		}
+		a {
+			grid-column: 1/-1;
+			grid-row: 1/-1;
+			margin-top: auto;
+			color: white;
+			text-transform: uppercase;
+			text-decoration: none;
+			margin-bottom: 3rem;
 		}
 
 		.image {
