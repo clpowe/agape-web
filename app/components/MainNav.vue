@@ -85,13 +85,14 @@
 						}}</NuxtLink></li
 					>
 				</template>
-
-				<li v-if="!isMobile">
-					<AppButton link="/">Pay Bill</AppButton>
-				</li>
-				<li v-if="!isMobile">
-					<AppButton link="/" secondary>team prayer</AppButton>
-				</li>
+				<div class="actions">
+					<li v-if="!isMobile">
+						<AppButton link="/">Pay Bill</AppButton>
+					</li>
+					<li v-if="!isMobile">
+						<AppButton link="/" secondary>team prayer</AppButton>
+					</li>
+				</div>
 
 				<li v-if="isMobile">
 					<AppButton
@@ -120,7 +121,7 @@
 								name
 							}}</NuxtLink></li
 						>
-						<div class="actions">
+						<div class="mobile-actions">
 							<li>
 								<AppButton link="/">Pay Bill</AppButton>
 							</li>
@@ -191,6 +192,11 @@
 		height: 2rem;
 	}
 
+	.actions {
+		display: flex;
+		margin-left: 40px;
+	}
+
 	dialog {
 		--timing: 0.3s;
 
@@ -242,7 +248,7 @@
 			padding-block: 1rem;
 		}
 
-		ul .actions {
+		ul .mobile-actions {
 			width: 100%;
 			gap: 0.5rem;
 			display: flex;

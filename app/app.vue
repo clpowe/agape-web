@@ -44,7 +44,7 @@
 	.content-grid,
 	.full-width {
 		--padding-inline: 1rem;
-		--content-max-width: 80ch;
+		--content-max-width: 1210px;
 		--breakout-max-width: 95ch;
 
 		--breakout-size: calc(

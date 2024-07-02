@@ -8,7 +8,7 @@
 	<section class="hero">
 		<div class="content">
 			<div class="vertical-line light"></div>
-			<p>Welcome to </p>
+			<p class="eyebrow">Welcome to </p>
 			<h1>Agape Christian Bar Prep</h1>
 			<p>Personalized service with proven results</p>
 		</div>
@@ -42,6 +42,12 @@
 
 			justify-items: center;
 			font-family: 'Gilda Display';
+
+			.eyebrow {
+				font-family: 'Gilda Display';
+				text-transform: uppercase;
+				font-size: 1.5rem;
+			}
 
 			h1 {
 				text-transform: uppercase;
