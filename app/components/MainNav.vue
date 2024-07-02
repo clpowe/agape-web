@@ -38,7 +38,8 @@
 		}
 	])
 
-	const expanded = ref(false)
+	const expanded = useState(() => shallowRef(false))
+	onClickOutside(mobileMenu, () => closeNav)
 
 	function openNav() {
 		expanded.value = true
@@ -48,6 +49,14 @@
 		expanded.value = false
 		mobileMenu.value.close()
 	}
+
+	const router = useRouter()
+
+	watch(router.currentRoute, () => {
+		if (expanded.value) {
+			closeNav()
+		}
+	})
 </script>
 
 <template>
@@ -89,24 +98,31 @@
 			</ul>
 		</nav>
 		<dialog v-if="isMobile" ref="mobileMenu" @clickoutside="closeNav">
-			<AppButton @click="closeNav" ghost class="dark close-btn">
-				close <Bars class="bars" />
-			</AppButton>
-			<nav aria-label="Main">
-				<ul role="list">
-					<li v-for="{ name, link, id } in navigation"
-						><NuxtLink class="mobile-nav-link" :key="id" :to="link">{{
-							name
-						}}</NuxtLink></li
-					>
-					<li>
-						<AppButton link="/">Pay Bill</AppButton>
-					</li>
-					<li>
-						<AppButton link="/" secondary>team prayer</AppButton>
-					</li>
-				</ul>
-			</nav>
+			<header>
+				<AgapeLogoDark class="" />
+				<AppButton @click="closeNav" ghost class="dark close-btn">
+					close <Bars class="bars" />
+				</AppButton>
+			</header>
+			<section>
+				<nav class="mobile-nav" aria-label="Main">
+					<ul role="list">
+						<li v-for="{ name, link, id } in navigation"
+							><NuxtLink class="mobile-nav-link" :key="id" :to="link">{{
+								name
+							}}</NuxtLink></li
+						>
+						<div class="actions">
+							<li>
+								<AppButton link="/">Pay Bill</AppButton>
+							</li>
+							<li>
+								<AppButton link="/" secondary>team prayer</AppButton>
+							</li>
+						</div>
+					</ul>
+				</nav>
+			</section>
 		</dialog>
 	</header>
 </template>
@@ -182,25 +198,46 @@
 			animation: slideIn var(--timing) ease-in-out;
 		}
 
-		nav > ul {
+		header {
 			display: flex;
-			gap: 2rem;
+			align-items: center;
+			padding-inline: 1rem;
+			padding-top: 1.5rem;
+			justify-content: space-between;
+		}
+
+		header > svg {
+			height: 60px;
+		}
+
+		.mobile-nav > ul {
+			display: flex;
 			width: 100%;
+			gap: 0;
 			flex-direction: column;
 		}
 
 		ul li:has(.mobile-nav-link) {
 			height: 100%;
-			border-bottom: 1px solid red;
+			display: flex;
+			align-items: center;
+
+			border-top: 1px solid oklch(var(--txt--light) / 0.2);
+		}
+
+		ul li:first-of-type {
+			border-top: none;
 		}
 
 		li {
 			width: 100%;
+			padding-block: 1rem;
 		}
 
-		.close-btn {
-			margin-left: auto;
-			margin-bottom: 1rem;
+		ul .actions {
+			width: 100%;
+			gap: 0.5rem;
+			display: flex;
 		}
 	}
 
@@ -261,7 +298,8 @@
 		overflow: wrap;
 		word-break: initial;
 		flex-direction: row;
-		height: 100%;
+		color: #000;
+
 		width: 100%;
 		position: relative;
 		align-items: center;
