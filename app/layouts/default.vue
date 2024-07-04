@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-	const menubarheight = ref()
+	const menubarheight = useState<number>(() => 0)
 
 	provide('menubarheight', menubarheight)
 </script>

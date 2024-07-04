@@ -1,5 +1,6 @@
 <script setup lang="ts">
 	import image from '../assets/HomeHero.png'
+	const { isMobile } = useBreakpoints()
 
 	const menubarheight = inject('menubarheight')
 </script>
@@ -26,9 +27,9 @@
 		align-items: center;
 		place-content: center;
 		justify-items: center;
-		height: 800px;
+		height: v-bind(isMobile ? '90dvq': '800px');
 		overflow: hidden;
-		margin-top: v-bind((menubarheight * -1)+ 'px');
+		margin-top: v-bind(((menubarheight) * -1)+ 'px');
 
 		.content {
 			grid-column: 1/-1;
@@ -39,7 +40,6 @@
 			width: 100%;
 			color: white;
 			gap: 1.5rem;
-
 			justify-items: center;
 			font-family: 'Gilda Display';
 
@@ -51,7 +51,7 @@
 
 			h1 {
 				text-transform: uppercase;
-				font-size: 4rem;
+				font-size: clamp(3rem, calc(0.1rem + 15vw), 4rem);
 				line-height: 90%;
 				max-width: 18ch;
 			}

@@ -2,19 +2,9 @@
 	import AgapeLogo from './AgapeLogo.vue'
 	import Bars from '../assets/icons/menu-bars.vue'
 
-	const { x, y } = useWindowScroll()
+	const { y } = useWindowScroll()
 
-	const { isMobile } = useBreakpoints()
-	const mobileMenu = ref<HTMLDialogElement | null>(null)
-
-	const navBar = ref(null)
-	const { height } = useElementSize(navBar)
-	const menuHeight = defineModel()
-
-	watchEffect(() => {
-		menuHeight.value = height.value
-	})
-
+	// Nav links
 	const navigation = ref([
 		{
 			id: '1',
@@ -38,9 +28,20 @@
 		}
 	])
 
+	// Get Menu Height
+	const navBar = ref(null)
+	const { height } = useElementSize(navBar)
+	const menuHeight = defineModel()
+	watchEffect(() => {
+		menuHeight.value = height.value
+	})
+
+	// Mobile Menu
+	const { isMobile } = useBreakpoints()
+
+	const mobileMenu = ref<HTMLDialogElement | null>(null)
 	const expanded = useState(() => shallowRef(false))
 	onClickOutside(mobileMenu, () => closeNav)
-
 	function openNav() {
 		expanded.value = true
 		if (mobileMenu.value) {
@@ -57,9 +58,7 @@
 			console.error("Mobile menu doesn't exist")
 		}
 	}
-
 	const router = useRouter()
-
 	watch(router.currentRoute, () => {
 		if (expanded.value) {
 			closeNav()
@@ -68,13 +67,8 @@
 </script>
 
 <template>
-	<header class="">
-		<nav
-			aria-label="Main"
-			ref="navBar"
-			class="main-nav breakout"
-			:class="{ 'scrolled-nav': y > 0 }"
-		>
+	<header class="" :class="{ 'scrolled-nav': y > 0 }">
+		<nav aria-label="Main" ref="navBar" class="main-nav breakout">
 			<ul role="list">
 				<li class="logo"><AgapeLogo /> </li>
 
@@ -139,11 +133,34 @@
 <style scoped>
 	header {
 		z-index: 100;
-		//background-color: oklch(var(--bg--dark));
+		background-color: oklch(var(--bg--dark) / 0);
+		transition: background-color 300ms var(--_easing);
 	}
+
+	.scrolled-nav {
+		position: sticky;
+		width: 100%;
+		top: 0;
+		background-color: oklch(var(--bg--dark) / 0.8);
+		backdrop-filter: blur(5px);
+
+		.logo svg {
+			height: 40px;
+		}
+
+		ul {
+			padding-block: 0.5rem;
+		}
+
+		.nav-link {
+			&:hover::after {
+				top: -16px;
+			}
+		}
+	}
+
 	nav {
 		width: 100%;
-		padding-inline: 1rem;
 		z-index: 100;
 	}
 
@@ -167,6 +184,7 @@
 		svg {
 			width: fit-content;
 			height: 60px;
+			transition: height var(--_transitionSpeed) var(--_easing);
 		}
 	}
 
@@ -195,6 +213,7 @@
 	.actions {
 		display: flex;
 		margin-left: 40px;
+		gap: 1rem;
 	}
 
 	dialog {
@@ -202,6 +221,7 @@
 
 		width: 100%;
 		max-width: 100vw;
+		padding-inline: 1rem;
 		animation: slideOut var(--timing) ease-in-out;
 		transition:
 			display var(--timing) allow-discrete,
@@ -215,7 +235,6 @@
 		header {
 			display: flex;
 			align-items: center;
-			padding-inline: 1rem;
 			padding-top: 1.5rem;
 			justify-content: space-between;
 		}
