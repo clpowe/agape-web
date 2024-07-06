@@ -19,44 +19,46 @@
 			title="Our Programs"
 			text="At Agape Christian, we focus on you. We offer programs that meet your goals and needs."
 		>
-			<ul
-				><li
-					><h3>Law School</h3>
+			<ListContainer>
+				<li>
+					<SvgoIconGraduationhat class="icon" />
+					<h3>Law School</h3>
 					<p
 						>Agape Christian Bar Prep partners with law schools to help prepare
 						their students for success in law school and on the bar exam.</p
-					></li
-				>
-				<a href="">learn more about our law school program</a>
-				<li
-					><h3>Bar Prep</h3>
+					>
+					<AppButton link="/">about our law school program</AppButton>
+				</li>
+				<li>
+					<SvgoIconCertificate class="icon" />
+					<h3>Bar Prep</h3>
 					<p
 						>Agape Christian Bar Prep helps law graduates prepare to pass the
 						bar exam.</p
-					></li
-				>
-				<a href="">learn more about our bar prep program</a>
-				<li
-					><h3>Law School Prep</h3>
+					>
+					<AppButton link="/"> about our bar prep program </AppButton>
+				</li>
+				<li>
+					<SvgoIconBook class="icon" />
+					<h3>Law School Prep</h3>
 					<p
 						>Agape Christian Bar Prep helps law students prepare for success in
 						law school.</p
-					></li
-				>
-				<a href="">learn more about our law school prep</a>
-			</ul>
+					>
+					<AppButton link="/">about our law school prep </AppButton>
+				</li>
+			</ListContainer>
 		</ContentSection>
 	</main>
 </template>
 
 <script setup>
+	import IconLawSchool from '~/assets/icons/icon-lawschool.svg'
 	useHead({
 		title: 'Agape Christian Bar Prep'
 	})
 
 	const heroEl = ref(null)
-
-	import image from '../assets/HomeHero.png'
 </script>
 
 <style scoped>
@@ -67,5 +69,10 @@
 
 	.hero {
 		display: grid;
+	}
+
+	.icon {
+		color: oklch(var(--accent));
+		font-size: 5rem;
 	}
 </style>

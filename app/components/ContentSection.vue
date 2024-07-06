@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="vertical-line"></div>
-		<div>
+		<div class="header">
 			<h2>
 				<template v-if="pretext">
 					<span>{{ pretext }}</span
@@ -29,10 +29,13 @@
 		align-items: left;
 		justify-items: left;
 		text-align: left;
-		max-width: 85ch;
 		margin: auto;
 		gap: 1.5rem;
 		padding-block: 2rem;
+	}
+
+	.header {
+		max-width: 85ch;
 	}
 
 	h2 {

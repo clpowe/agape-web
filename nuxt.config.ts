@@ -9,12 +9,16 @@ export default defineNuxtConfig({
 		'@nuxt/test-utils/module',
 		'@nuxt/fonts',
 		'@nuxt/image',
-		'@vueuse/nuxt'
+		'@vueuse/nuxt',
+		'nuxt-svgo'
 	],
 	app: {
 		head: {
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1'
 		}
+	},
+	svgo: {
+		autoImportPath: '~/assets/icons'
 	}
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import AgapeLogo from './AgapeLogo.vue'
-	import Bars from '../assets/icons/menu-bars.vue'
+	import IconMenu from '~/assets/icons/icon-menu.svg'
 
 	const { y } = useWindowScroll()
 
@@ -95,7 +95,7 @@
 						ghost
 						@click="openNav"
 					>
-						menu <Bars class="bars" />
+						menu <IconMenu class="bars" />
 					</AppButton>
 				</li>
 			</ul>
@@ -104,7 +104,7 @@
 			<header>
 				<AgapeLogoDark class="" />
 				<AppButton @click="closeNav" ghost class="dark close-btn">
-					close <Bars class="bars" />
+					close <IconMenu class="bars" />
 				</AppButton>
 			</header>
 			<section>
