@@ -3,8 +3,10 @@
 		<div class="vertical-line"></div>
 		<div>
 			<h2>
-				<span>{{ pretext }}</span
-				><br />
+				<template v-if="pretext">
+					<span>{{ pretext }}</span
+					><br />
+				</template>
 				{{ title }}
 			</h2>
 			<p>{{ text }}</p>

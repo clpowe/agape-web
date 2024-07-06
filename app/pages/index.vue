@@ -12,10 +12,13 @@
 				conquer the bar exam and achieve their dreams of becoming attorneys."
 			class="breakout"
 		>
-			<a href="">Learn more about Agape</a>
+			<AppButton link="/about">Learn more about Agape</AppButton>
 		</ContentSection>
 
-		<section class="full-width">
+		<ContentSection
+			title="Our Programs"
+			text="At Agape Christian, we focus on you. We offer programs that meet your goals and needs."
+		>
 			<ul
 				><li
 					><h3>Law School</h3>
@@ -42,7 +45,7 @@
 				>
 				<a href="">learn more about our law school prep</a>
 			</ul>
-		</section>
+		</ContentSection>
 	</main>
 </template>
 

@@ -32,7 +32,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.5em;
-		background-color: oklch(var(--accent));
+		background-color: oklch(var(--txt));
 		color: oklch(var(--bg));
 		text-decoration: none;
 		padding: 0.4em 1.4em;
@@ -41,7 +41,9 @@
 		border-radius: 50rem;
 		transition: background-color var(--_transitionSpeed) var(--_easing);
 	}
-
+	.btn--accent {
+		--accent: var(--accent);
+	}
 	.btn--secondary {
 		--accent: var(--secondary);
 	}
@@ -65,7 +67,7 @@
 	}
 
 	.btn:where(:hover, :active) {
-		background-color: oklch(var(--accent) / 0.8);
+		background-color: oklch(var(--txt) / 0.8);
 	}
 
 	.btn--ghost:where(:hover, :active) {
