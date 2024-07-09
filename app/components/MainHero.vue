@@ -12,11 +12,10 @@
 			<p class="eyebrow">Welcome to </p>
 			<h1>Agape Christian Bar Prep</h1>
 			<p>Personalized service with proven results</p>
+			<a href="">discover more</a>
 		</div>
-		<a href="">discover more</a>
-		<div class="image">
-			<img alt="Home Hero" height="100" :src="image" />
-		</div>
+
+		<img alt="Home Hero" height="100" :src="image" />
 	</section>
 </template>
 
@@ -33,10 +32,10 @@
 
 		.content {
 			grid-column: 1/-1;
+			grid-row: 1/-1;
 			text-align: center;
 			display: grid;
 			flex-direction: column;
-			grid-row: 1/-1;
 			width: 100%;
 			color: white;
 			gap: 1.5rem;
@@ -66,17 +65,13 @@
 			margin-bottom: 3rem;
 		}
 
-		.image {
-			object-fit: cover;
+		img {
+			height: 100%;
 			grid-column: 1/-1;
 			grid-row: 1/-1;
+			width: 100%;
 			z-index: -1;
-			overflow: hidden;
-
-			img {
-				height: 100%;
-				object-fit: cover;
-			}
+			object-fit: cover;
 		}
 	}
 </style>

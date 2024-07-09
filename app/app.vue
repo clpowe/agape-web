@@ -177,4 +177,9 @@
 			background-color: oklch(var(--txt--dark));
 		}
 	}
+
+	// Utilities
+	.mx-auto {
+		margin-block: auto;
+	}
 </style>

@@ -12,7 +12,7 @@
 				conquer the bar exam and achieve their dreams of becoming attorneys."
 			class="breakout"
 		>
-			<AppButton link="/about">Learn more about Agape</AppButton>
+			<a link="/about">Learn more about Agape</a>
 		</ContentSection>
 
 		<ContentSection
@@ -27,7 +27,7 @@
 						>Agape Christian Bar Prep partners with law schools to help prepare
 						their students for success in law school and on the bar exam.</p
 					>
-					<AppButton link="/">about our law school program</AppButton>
+					<a :ghost="true" href="/">about our law school program</a>
 				</li>
 				<li>
 					<SvgoIconCertificate class="icon" />
@@ -36,7 +36,7 @@
 						>Agape Christian Bar Prep helps law graduates prepare to pass the
 						bar exam.</p
 					>
-					<AppButton link="/"> about our bar prep program </AppButton>
+					<a ghost="true" href="/"> about our bar prep program </a>
 				</li>
 				<li>
 					<SvgoIconBook class="icon" />
@@ -45,15 +45,34 @@
 						>Agape Christian Bar Prep helps law students prepare for success in
 						law school.</p
 					>
-					<AppButton link="/">about our law school prep </AppButton>
+					<a href="/">about our law school prep </a>
 				</li>
 			</ListContainer>
 		</ContentSection>
+
+		<ContentSection
+			pretext="The Agape Way"
+			title="Our Services"
+			text="Agape Christian Bar Prep offers many services to help students prepare for success in law school and on the bar exam. Our services are customized to clearly identify and meet the individual needs of law graduates and law students."
+			class="breakout"
+		>
+			<ul class="list">
+				<li>Florida Bar Exam</li>
+				<li>Uniform Bar Exam</li>
+				<li>Multistate Bar Exam</li>
+				<li>Writing Courses</li>
+				<li>Consultations</li>
+				<li>Law School Exam Prep</li>
+				<li>Early Bar Exam Prep</li>
+				<li>Tutoring Services</li>
+			</ul>
+		</ContentSection>
+
+		<BannerSection />
 	</main>
 </template>
 
 <script setup>
-	import IconLawSchool from '~/assets/icons/icon-lawschool.svg'
 	useHead({
 		title: 'Agape Christian Bar Prep'
 	})
@@ -62,11 +81,6 @@
 </script>
 
 <style scoped>
-	img {
-		width: 100%;
-		height: 100%;
-	}
-
 	.hero {
 		display: grid;
 	}
@@ -74,5 +88,21 @@
 	.icon {
 		color: oklch(var(--accent));
 		font-size: 5rem;
+	}
+
+	.list {
+		display: grid;
+		gap: 1rem;
+		list-style: none;
+		width: 100%;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+		li {
+			background-color: oklch(var(--accent));
+			text-align: center;
+			color: white;
+			padding: 0.25em 0.5em;
+			border-radius: 99999em;
+		}
 	}
 </style>

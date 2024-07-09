@@ -31,6 +31,7 @@
 		text-align: left;
 		margin: auto;
 		gap: 1.5rem;
+		width: 100%;
 		padding-block: 2rem;
 	}
 

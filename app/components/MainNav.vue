@@ -134,7 +134,7 @@
 	header {
 		z-index: 100;
 		background-color: oklch(var(--bg--dark) / 0);
-		transition: background-color 300ms var(--_easing);
+		transition: all 300ms var(--_easing);
 	}
 
 	.scrolled-nav {
@@ -184,7 +184,7 @@
 		svg {
 			width: fit-content;
 			height: 60px;
-			transition: height var(--_transitionSpeed) var(--_easing);
+			transition: all var(--_transitionSpeed) var(--_easing);
 		}
 	}
 
