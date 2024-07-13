@@ -8,39 +8,50 @@
 <template>
 	<section class="hero">
 		<div class="content">
-			<div class="vertical-line light"></div>
+			<div class="vertical-line light mt-auto"></div>
 			<p class="eyebrow">Welcome to </p>
 			<h1>Agape Christian Bar Prep</h1>
 			<p>Personalized service with proven results</p>
+
 			<a href="">discover more</a>
 		</div>
-
-		<img alt="Home Hero" height="100" :src="image" />
+		<div class="img-holder">
+			<img alt="Home Hero" height="100" :src="image" />
+		</div>
 	</section>
 </template>
 
 <style scoped>
+	.mt-auto {
+		margin-top: auto;
+	}
 	.hero {
 		display: grid;
 		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
 		align-items: center;
 		place-content: center;
 		justify-items: center;
-		height: v-bind(isMobile ? '90dvq': '800px');
+		height: 100dvh;
+		min-height: 570px;
+		max-height: 900px;
 		overflow: hidden;
 		margin-top: v-bind(((menubarheight) * -1)+ 'px');
 
 		.content {
-			grid-column: 1/-1;
-			grid-row: 1/-1;
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
 			text-align: center;
-			display: grid;
+			display: flex;
 			flex-direction: column;
 			width: 100%;
+			height: 100%;
 			color: white;
 			gap: 1.5rem;
 			justify-items: center;
 			font-family: 'Gilda Display';
+			align-items: center;
+			align-content: center;
 
 			.eyebrow {
 				font-family: 'Gilda Display';
@@ -56,21 +67,27 @@
 			}
 		}
 		a {
-			grid-column: 1/-1;
-			grid-row: 1/-1;
 			margin-top: auto;
+			margin-bottom: 2rem;
 			color: white;
 			text-transform: uppercase;
 			text-decoration: none;
-			margin-bottom: 3rem;
+		}
+
+		.img-holder {
+			grid-column: 1/-1;
+			grid-row: 1/-1;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			overflow: hidden;
 		}
 
 		img {
 			height: 100%;
+			width: 100%;
 			grid-column: 1/-1;
 			grid-row: 1/-1;
-			width: 100%;
-			z-index: -1;
 			object-fit: cover;
 		}
 	}

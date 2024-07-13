@@ -20,32 +20,8 @@
 			text="At Agape Christian, we focus on you. We offer programs that meet your goals and needs."
 		>
 			<ListContainer>
-				<li>
-					<SvgoIconGraduationhat class="icon" />
-					<h3>Law School</h3>
-					<p
-						>Agape Christian Bar Prep partners with law schools to help prepare
-						their students for success in law school and on the bar exam.</p
-					>
-					<a :ghost="true" href="/">about our law school program</a>
-				</li>
-				<li>
-					<SvgoIconCertificate class="icon" />
-					<h3>Bar Prep</h3>
-					<p
-						>Agape Christian Bar Prep helps law graduates prepare to pass the
-						bar exam.</p
-					>
-					<a ghost="true" href="/"> about our bar prep program </a>
-				</li>
-				<li>
-					<SvgoIconBook class="icon" />
-					<h3>Law School Prep</h3>
-					<p
-						>Agape Christian Bar Prep helps law students prepare for success in
-						law school.</p
-					>
-					<a href="/">about our law school prep </a>
+				<li v-for="program in programs">
+					<ListItem v-bind="program" />
 				</li>
 			</ListContainer>
 		</ContentSection>
@@ -78,16 +54,32 @@
 	})
 
 	const heroEl = ref(null)
+
+	const programs = [
+		{
+			icon: 'SvgoIconCourt',
+			title: 'Law School',
+			text: 'Agape Christian Bar Prep partners with law schools to help prepare their students for success in law school and on the bar exam.',
+			href: '/'
+		},
+		{
+			icon: 'SvgoIconBarlaw',
+			title: 'Bar Prep',
+			text: 'Agape Christian Bar Prep helps law graduates prepare to pass the bar exam.',
+			href: '/'
+		},
+		{
+			icon: 'SvgoIconSchoolpreplaw',
+			title: 'Law School Prep',
+			text: 'Agape Christian Bar Prep helps law students prepare for success in law school.',
+			href: '/'
+		}
+	]
 </script>
 
 <style scoped>
 	.hero {
 		display: grid;
-	}
-
-	.icon {
-		color: oklch(var(--accent));
-		font-size: 5rem;
 	}
 
 	.list {
@@ -96,13 +88,5 @@
 		list-style: none;
 		width: 100%;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-		li {
-			background-color: oklch(var(--accent));
-			text-align: center;
-			color: white;
-			padding: 0.25em 0.5em;
-			border-radius: 99999em;
-		}
 	}
 </style>

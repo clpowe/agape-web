@@ -165,9 +165,10 @@
 	}
 
 	.vertical-line {
-		width: 2px;
+		width: 1px;
 		height: 75px;
 		background-color: oklch(var(--txt));
+		opacity: 0.5;
 
 		&.light {
 			background-color: oklch(var(--txt--dark));

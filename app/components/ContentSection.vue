@@ -27,7 +27,7 @@
 	section {
 		display: grid;
 		align-items: left;
-		justify-items: left;
+		justify-items: center;
 		text-align: left;
 		margin: auto;
 		gap: 1.5rem;
