@@ -5,6 +5,12 @@ export default defineNuxtConfig({
 		compatibilityVersion: 4
 	},
 	ssr: false,
+	postcss: {
+		plugins: {
+			cssnano: {},
+			autoprefixer: {}
+		}
+	},
 	modules: [
 		'@nuxt/test-utils/module',
 		'@nuxt/fonts',

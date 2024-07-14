@@ -13,6 +13,7 @@
     "@nuxt/fonts": "latest",
     "nuxt": "^3.12.2",
     "nuxt-svgo": "latest",
+    "open-props": "^1.7.5",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
@@ -23,6 +24,7 @@
     "@vueuse/nuxt": "latest",
     "happy-dom": "^14.12.3",
     "playwright-core": "^1.45.0",
+    "postcss-jit-props": "^1.0.14",
     "vitest": "^1.6.0"
   }
 }

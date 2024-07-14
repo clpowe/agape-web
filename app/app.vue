@@ -15,6 +15,8 @@
 </template>
 
 <style>
+	@import 'open-props/style';
+
 	*,
 	*::after,
 	*::before {
@@ -179,7 +181,6 @@
 		}
 	}
 
-	// Utilities
 	.mx-auto {
 		margin-block: auto;
 	}

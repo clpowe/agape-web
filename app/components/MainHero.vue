@@ -1,8 +1,5 @@
 <script setup lang="ts">
 	import image from '../assets/HomeHero.png'
-	const { isMobile } = useBreakpoints()
-
-	const menubarheight = inject('menubarheight')
 </script>
 
 <template>
@@ -36,7 +33,7 @@
 		min-height: 570px;
 		max-height: 900px;
 		overflow: hidden;
-		margin-top: v-bind(((menubarheight) * -1)+ 'px');
+		margin-top: -96px;
 
 		.content {
 			grid-column: 1 / -1;
@@ -52,6 +49,7 @@
 			font-family: 'Gilda Display';
 			align-items: center;
 			align-content: center;
+			z-index: 1;
 
 			.eyebrow {
 				font-family: 'Gilda Display';
@@ -79,7 +77,6 @@
 			grid-row: 1/-1;
 			width: 100%;
 			height: 100%;
-			z-index: -1;
 			overflow: hidden;
 		}
 

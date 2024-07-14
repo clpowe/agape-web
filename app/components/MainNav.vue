@@ -28,14 +28,6 @@
 		}
 	])
 
-	// Get Menu Height
-	const navBar = ref(null)
-	const { height } = useElementSize(navBar)
-	const menuHeight = defineModel()
-	watchEffect(() => {
-		menuHeight.value = height.value
-	})
-
 	// Mobile Menu
 	const { isMobile } = useBreakpoints()
 
@@ -68,7 +60,7 @@
 
 <template>
 	<header class="" :class="{ 'scrolled-nav': y > 0 }">
-		<nav aria-label="Main" ref="navBar" class="main-nav breakout">
+		<nav aria-label="Main" class="main-nav breakout">
 			<ul role="list">
 				<li class="logo"><AgapeLogo /> </li>
 
