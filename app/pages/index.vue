@@ -92,6 +92,9 @@
 		</div>
 
 		<BannerSection />
+		<ContentSection pretext="Learning first" title="Student Testimonials">
+			<MasonaryGrid />
+		</ContentSection>
 	</main>
 </template>
 
