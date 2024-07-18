@@ -73,17 +73,17 @@
 				</ul>
 			</ContentSection>
 			<div class="imageSection">
-				<img
+				<NuxtImg
 					src="../assets/two-multiracial-women-working-together-at-cowokri-2023-11-27-05-03-38-utc.JPG"
 					alt=""
 					class="img-1"
 				/>
-				<img
+				<NuxtImg
 					src="../assets/young-attractive-students-spending-time-in-library-2023-11-27-04-49-20-utc.jpg"
 					alt=""
 					class="img-2"
 				/>
-				<img
+				<NuxtImg
 					src="../assets/working-hard-for-a-bright-future-2024-04-30-20-11-51-utc.jpg"
 					alt=""
 					class="img-3"

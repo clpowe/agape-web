@@ -1,6 +1,11 @@
-# Nuxt 3 Minimal Starter
+# Agape Christian Wesite
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Todo
+
+- [ ] Footer
+- [ ] Home Page
+- [ ] About Page
+- [ ] Booking Form
 
 ## Setup
 

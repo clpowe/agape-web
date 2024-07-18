@@ -13,7 +13,7 @@
 			<a href="">discover more</a>
 		</div>
 		<div class="img-holder">
-			<img alt="Home Hero" height="100" :src="image" />
+			<NuxtImg alt="Home Hero" height="100" :src="image" />
 		</div>
 	</section>
 </template>
