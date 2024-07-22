@@ -74,17 +74,17 @@
 			</ContentSection>
 			<div class="imageSection">
 				<NuxtImg
-					src="../assets/two-multiracial-women-working-together-at-cowokri-2023-11-27-05-03-38-utc.JPG"
+					src="/two-multiracial-women-working-together-at-cowokri-2023-11-27-05-03-38-utc.JPG"
 					alt=""
 					class="img-1"
 				/>
 				<NuxtImg
-					src="../assets/young-attractive-students-spending-time-in-library-2023-11-27-04-49-20-utc.jpg"
+					src="/working-hard-for-a-bright-future-2024-04-30-20-11-51-utc.jpg"
 					alt=""
 					class="img-2"
 				/>
 				<NuxtImg
-					src="../assets/working-hard-for-a-bright-future-2024-04-30-20-11-51-utc.jpg"
+					src="/young-attractive-students-spending-time-in-library-2023-11-27-04-49-20-utc.jpg"
 					alt=""
 					class="img-3"
 				/>
