@@ -6,6 +6,11 @@ export default defineNuxtConfig({
 			autoprefixer: {}
 		}
 	},
+	runtimeConfig: {
+		public: {
+			builderApiKey: process.env.NUXT_PUBLIC_BUILDER_API_KEY
+		}
+	},
 	modules: [
 		'@nuxt/test-utils/module',
 		'@nuxt/fonts',

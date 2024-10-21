@@ -187,8 +187,9 @@
 		}
 	]
 
+	const config = useRuntimeConfig()
 	// TODO: enter your public API key
-	const BUILDER_PUBLIC_API_KEY = '89c086c005db4edca4acbd7d24c976ec' // ggignore
+	const BUILDER_PUBLIC_API_KEY = config.public.builderApiKey // ggignore
 
 	const route = useRoute()
 

@@ -49,11 +49,12 @@
 	import { HamburgerMenuIcon } from '@radix-icons/vue'
 
 	const open = ref(false)
+	const config = useRuntimeConfig()
 
 	const { data } = await useAsyncData('nav-links', () =>
 		fetchOneEntry({
 			model: 'navigation-links',
-			apiKey: '89c086c005db4edca4acbd7d24c976ec'
+			apiKey: config.public.builderApiKey
 		})
 	)
 </script>
