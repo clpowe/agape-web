@@ -1,7 +1,10 @@
 <script setup lang="ts">
-	useHead({
+	useServerHead({
 		htmlAttrs: {
 			lang: 'en'
+		},
+		bodyAttrs: {
+			class: 'font-helvetica antialiased'
 		}
 	})
 </script>
@@ -15,70 +18,6 @@
 </template>
 
 <style>
-	@import 'open-props/style';
-
-	*,
-	*::after,
-	*::before {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	a {
-		display: block;
-		overflow: wrap;
-		word-break: initial;
-		position: relative;
-		align-items: center;
-		justify-content: center;
-		font-weight: initial;
-		line-height: 20px;
-		text-decoration: none;
-	}
-
-	button {
-		font: inherit;
-		cursor: pointer;
-		border: none;
-	}
-
-	.content-grid,
-	.full-width {
-		--padding-inline: 1rem;
-		--content-max-width: 1210px;
-		--breakout-max-width: 95ch;
-
-		--breakout-size: calc(
-			(var(--breakout-max-width) - var(--content-max-width)) / 2
-		);
-
-		display: grid;
-		grid-template-columns:
-			[full-width-start] minmax(var(--padding-inline), 1fr)
-			[breakout-start] minmax(0, var(--breakout-size))
-			[content-start] min(
-				100% - (var(--padding-inline) * 2),
-				var(--content-max-width)
-			)
-			[content-end]
-			minmax(0, var(--breakout-size)) [breakout-end]
-			minmax(var(--padding-inline), 1fr) [full-width-end];
-	}
-
-	.content-grid > :not(.breakout, .full-width),
-	.full-width > :not(.breakout, .full-width) {
-		grid-column: content;
-	}
-
-	.content-grid > .breakout {
-		grid-column: breakout;
-	}
-
-	.content-grid > .full-width {
-		grid-column: full-width;
-	}
-
 	:root {
 		--_hue: 24.64;
 		--_easing: cubic-bezier(0.66, -0.2, 0.27, 1.15);
@@ -115,73 +54,11 @@
 		--font-3xl: 2.074rem;
 		--font-4xl: 2.488rem;
 		--font-5xl: 2.986rem;
+
+		--border: 1px solid oklch(var(--txt));
 	}
 
-	/* @media (prefers-color-scheme: dark) {
-		:root {
-			--bg: var(--bg--dark);
-			--txt: var(--txt--dark);
-			--accent: var(--accent--dark);
-			--secondary: var(--secondary--dark);
-			color-scheme: dark;
-		}
-	} */
-
-	@media (prefers-reduced-motion: reduced) {
-		:root {
-			--_transitionSpeed: 0ms;
-		}
-	}
-
-	html {
-		scrollbar-gutter: stable;
-	}
-
-	body {
-		margin: 0;
-		padding: 0;
-		background-color: oklch(var(--bg));
-		color: oklch(var(--txt));
-		font-family: 'Inter';
-	}
-
-	h2 {
-		font-family: 'Gilda Display';
-		font-weight: 400;
-		text-transform: uppercase;
-		font-size: clamp(var(--font-4xl), 1px + 10vw, var(--font-5xl));
-		line-height: 0.9em;
-		margin: 0;
-
-		span {
-			color: var(--red);
-			font-size: 1.5rem;
-		}
-	}
-
-	p {
-		font-family: 'Inter';
-		font-weight: 400;
-		font-size: 1rem;
-		line-height: 1.5em;
-	}
-
-	.vertical-line {
-		width: 1px;
-		height: 75px;
-		background-color: oklch(var(--txt));
-		opacity: 0.5;
-
-		&.light {
-			background-color: oklch(var(--txt--dark));
-		}
-
-		&.dark {
-			background-color: oklch(var(--txt--dark));
-		}
-	}
-
-	.mx-auto {
-		margin-block: auto;
+	.builder-blocks {
+		gap: 10rem;
 	}
 </style>

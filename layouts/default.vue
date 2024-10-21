@@ -1,5 +1,5 @@
 <template>
-	<MainNav class="full-width content-grid" />
+	<AppHeader />
 	<slot />
 	<footer>
 		<p>©Agape Christian Bar Prep {{ new Date().getFullYear() }}</p>
