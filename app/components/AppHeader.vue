@@ -10,25 +10,25 @@
 
 			<nav class="ml-auto hidden md:block">
 				<ul class="flex gap-4">
-					<li v-for="link in data.data.links" :key="link.text">
+					<li v-for="link in data?.data?.links" :key="link.text">
 						<NuxtLink :to="link.url" class="uppercase text-sm">{{
 							link.text
 						}}</NuxtLink>
 					</li>
 				</ul>
 			</nav>
-			<Sheet v-model:open="open">
-				<SheetTrigger as-child class="block ml-auto md:hidden">
-					<Button variant="ghost" size="icon">
+			<AppSheet v-model:open="open">
+				<AppSheetTrigger as-child class="block ml-auto md:hidden">
+					<AppButton variant="ghost" size="icon">
 						<HamburgerMenuIcon class="w-4 h-4" />
-					</Button>
-				</SheetTrigger>
-				<SheetContent side="top">
-					<SheetTitle hidden>Navigation</SheetTitle>
+					</AppButton>
+				</AppSheetTrigger>
+				<AppSheetContent side="top">
+					<AppSheetTitle hidden>Navigation</AppSheetTitle>
 
 					<nav class="mt-6">
 						<ul class="flex flex-col gap-4">
-							<li v-for="link in data.data.links" :key="link.text">
+							<li v-for="link in data?.data?.links" :key="link.text">
 								<NuxtLink
 									:to="link.url"
 									class="uppercase text-2xl font-black"
@@ -37,8 +37,8 @@
 							</li>
 						</ul>
 					</nav>
-				</SheetContent>
-			</Sheet>
+				</AppSheetContent>
+			</AppSheet>
 		</div>
 	</GridComponent>
 </template>

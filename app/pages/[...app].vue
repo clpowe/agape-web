@@ -7,9 +7,9 @@
 				:api-key="BUILDER_PUBLIC_API_KEY"
 				:customComponents="REGISTERED_COMPONENTS"
 			/>
-			{{ content.name }}
 		</div>
 		<div v-else>Content not Found</div>
+		<BreakoutBanner />
 	</div>
 </template>
 
@@ -209,6 +209,6 @@
 	})
 
 	useSeoMeta({
-		title
+		title: title.value
 	})
 </script>

@@ -26,19 +26,19 @@
 					{{ title }}
 				</h1>
 
-				<AppContent :content="content" />
+				<AppContent v-if="content" :content="content" />
 
 				<div v-if="showCTA" class="flex gap-2">
-					<Button as-child>
-						<NuxtLink v-if="primaryCTA.text" :to="primaryCTA.url"
+					<AppButton as-child>
+						<NuxtLink v-if="primaryCTA?.text" :to="primaryCTA.url"
 							>{{ primaryCTA.text }}
 						</NuxtLink>
-					</Button>
-					<Button variant="outline" as-child>
-						<NuxtLink v-if="secondaryCTA.text" :to="secondaryCTA.url"
+					</AppButton>
+					<AppButton variant="outline" as-child>
+						<NuxtLink v-if="secondaryCTA?.text" :to="secondaryCTA.url"
 							>{{ secondaryCTA.text }}
 						</NuxtLink>
-					</Button>
+					</AppButton>
 				</div>
 			</div>
 			<div class="grid grid-cols-3 grid-rows-3">
@@ -48,9 +48,9 @@
 					<p class="text-2xl font-gilda leading-none">
 						Join us for team Prayer
 					</p>
-					<Button as-child>
+					<AppButton as-child>
 						<NuxtLink to="team-prayer">Team Prayer</NuxtLink>
-					</Button>
+					</AppButton>
 				</div>
 				<NuxtImg
 					:src="image"

@@ -6,17 +6,17 @@
 			>
 				<div>
 					<h2 class="header2">{{ title }}</h2>
-					<AppContent :content="content" />
+					<AppContent v-if="content" :content="content" />
 				</div>
 				<div
 					v-if="showCTA"
 					class="self-start place-self-start md:self-end md:place-self-end"
 				>
-					<Button as-child v-if="primaryCTA">
+					<AppButton as-child v-if="primaryCTA">
 						<NuxtLink v-if="primaryCTA.text" :to="primaryCTA.url"
 							>{{ primaryCTA.text }}
 						</NuxtLink>
-					</Button>
+					</AppButton>
 					<div v-if="price">
 						<p class="font-bold text-3xl text-right">{{ price }}</p>
 					</div>
@@ -30,7 +30,7 @@
 								{{ item.text }}
 							</h3>
 							<AppDivider />
-							<AppContent :content="item.content" />
+							<AppContent v-if="item.content" :content="item.content" />
 						</NuxtLink>
 					</ListLinkItem>
 				</ul>
@@ -40,17 +40,21 @@
 </template>
 
 <script setup lang="ts">
-	type Items = {
+	type Item = {
 		text: string
 		url?: string
 		content?: string
+	}
+
+	type Items = {
+		item: Item
 	}
 
 	const props = defineProps<{
 		title: string
 		content?: string
 		showCTA?: boolean
-		primaryCTA?: Link
+		primaryCTA?: Item
 		price: string
 		list: Items[]
 	}>()

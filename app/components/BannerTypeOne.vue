@@ -8,18 +8,18 @@
 					{{ title }}
 				</h2>
 				<div v-if="showCTA" class="flex gap-2">
-					<Button as-child>
-						<NuxtLink v-if="primaryCTA.text" :to="primaryCTA.url"
+					<AppButton as-child>
+						<NuxtLink v-if="primaryCTA?.text" :to="primaryCTA.url"
 							>{{ primaryCTA.text }}
 						</NuxtLink>
-					</Button>
+					</AppButton>
 				</div>
 			</div>
 			<div>
 				<h3 class="text-4xl font-gilda text-balance mb-4">
 					{{ subtitle }}
 				</h3>
-				<AppContent :content="content" />
+				<AppContent v-if="content" :content="content" />
 			</div>
 		</div>
 	</GridComponent>

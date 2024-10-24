@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	future: {
+		compatibilityVersion: 4
+	},
 	postcss: {
 		plugins: {
 			cssnano: {},
@@ -30,7 +33,7 @@ export default defineNuxtConfig({
 	},
 
 	svgo: {
-		autoImportPath: '~/assets/icons'
+		autoImportPath: '@/assets/icons'
 	},
 
 	image: {
@@ -45,12 +48,20 @@ export default defineNuxtConfig({
 		/**
 		 * Prefix for all the imported component
 		 */
-		prefix: '',
+		prefix: 'App',
 		/**
 		 * Directory that the component lives in.
-		 * @default "./components/ui"
+		 * @default "@/components/ui"
 		 */
-		componentDir: './components/ui'
+		componentDir: './app/components/ui'
 	},
-	compatibilityDate: '2024-07-20'
+	compatibilityDate: '2024-07-20',
+	dir: {
+		app: 'app'
+	},
+	typescript: {
+		typeCheck: true
+	},
+	experimental: {},
+	imports: {}
 })

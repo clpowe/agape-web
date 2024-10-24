@@ -8,7 +8,7 @@
 				{{ item.text }}
 			</h3>
 			<AppDivider />
-			<AppContent :content="item.content" />
+			<AppContent v-if="item.content" :content="item.content" />
 		</NuxtLink>
 	</li>
 </template>
