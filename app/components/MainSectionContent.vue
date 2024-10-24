@@ -19,10 +19,8 @@
 		url: string
 	}
 
-	const props = defineProps<{
+	defineProps<{
 		title: string
-		subtitle: string
-		content?: string
 		showCTA?: boolean
 		primaryCTA?: Link
 	}>()

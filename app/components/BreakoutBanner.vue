@@ -1,9 +1,22 @@
 <template>
 	<GridComponent element="section" class="full-width bg-red-800 text-white">
-		<div>Se</div>
+		<div>
+			<MainSectionContent :title :showCTA :primaryCTA />
+		</div>
 	</GridComponent>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	type Link = {
+		text: string
+		url: string
+	}
+
+	defineProps<{
+		title: string
+		showCTA?: boolean
+		primaryCTA?: Link
+	}>()
+</script>
 
 <style scoped></style>
