@@ -20,10 +20,11 @@
 <script setup lang="ts">
 	import { Content, fetchOneEntry, isPreviewing } from '@builder.io/sdk-vue'
 
-	import HelloWorldComponent from '../components/HelloWorld.vue'
-	import HeroBanner from '../components/HeroBanner.vue'
-	import BannerTypeOne from '../components/BannerTypeOne.vue'
-	import ListSection from '../components/ListSection.vue'
+	import HelloWorldComponent from '@/components/HelloWorld.vue'
+	import HeroBanner from '@/components/HeroBanner.vue'
+	import BannerTypeOne from '@/components/BannerTypeOne.vue'
+	import ListSection from '@/components/ListSection.vue'
+	import BreakoutBanner from '@/components/BreakoutBanner.vue'
 
 	// Register your Builder components
 	const REGISTERED_COMPONENTS = [
@@ -126,6 +127,39 @@
 							type: 'string'
 						}
 					]
+				}
+			]
+		},
+		{
+			component: BreakoutBanner,
+			name: 'Breakout Banner',
+			inputs: [
+				{
+					name: 'title',
+					type: 'string'
+				},
+				{
+					name: 'showCTA',
+					type: 'boolean'
+				},
+				{
+					name: 'primaryCTA',
+					type: 'object',
+					subFields: [
+						{
+							name: 'text',
+							type: 'string'
+						},
+						{
+							name: 'url',
+							type: 'string'
+						}
+					]
+				},
+				{
+					name: 'image',
+					type: 'file',
+					allowedFileTypes: ['jpg', 'png', 'gif', 'svg']
 				}
 			]
 		},

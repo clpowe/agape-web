@@ -3,10 +3,15 @@
 		<div>
 			<MainSectionContent :title :showCTA :primaryCTA />
 		</div>
+		<div>
+			<NuxtImg :src="image" />
+		</div>
 	</GridComponent>
 </template>
 
 <script setup lang="ts">
+	import { NuxtImg } from '~/.nuxt/components'
+
 	type Link = {
 		text: string
 		url: string
@@ -16,6 +21,7 @@
 		title: string
 		showCTA?: boolean
 		primaryCTA?: Link
+		image?: string
 	}>()
 </script>
 
