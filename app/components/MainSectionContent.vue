@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="header2">
+		<h2 class="header2" :class="{ 'header2-lg': lgText }">
 			{{ title }}
 		</h2>
 		<div v-if="showCTA" class="flex gap-2">
@@ -23,6 +23,7 @@
 		title: string
 		showCTA?: boolean
 		primaryCTA?: Link
+		lgText?: boolean
 	}>()
 </script>
 

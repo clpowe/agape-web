@@ -9,11 +9,6 @@
 			/>
 		</div>
 		<div v-else>Content not Found</div>
-		<BreakoutBanner
-			title="Set up a free consultation with one of our team members"
-			:showCTA="true"
-			:primaryCTA="{ text: 'Contact us today', url: '/' }"
-		/>
 	</div>
 </template>
 

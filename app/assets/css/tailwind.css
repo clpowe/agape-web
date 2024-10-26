@@ -78,11 +78,21 @@
 }
 
 .header2 {
-	@apply text-5xl font-gilda text-balance mb-4;
+	@apply text-5xl font-gilda text-balance mb-4 leading-tight;
+}
+
+.header2-lg {
+	@apply text-4xl md:text-6xl font-gilda text-balance mb-4 leading-tight;
 }
 
 .grid-list {
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+@media (min-width: 768px) {
+	.grid-list {
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	}
 }
