@@ -9,35 +9,21 @@
 			/>
 		</div>
 		<div v-else>Content not Found</div>
+		<CarouselSlider />
 	</div>
 </template>
 
 <script setup lang="ts">
 	import { Content, fetchOneEntry, isPreviewing } from '@builder.io/sdk-vue'
 
-	import HelloWorldComponent from '@/components/HelloWorld.vue'
 	import HeroBanner from '@/components/HeroBanner.vue'
 	import BannerTypeOne from '@/components/BannerTypeOne.vue'
 	import ListSection from '@/components/ListSection.vue'
 	import BreakoutBanner from '@/components/BreakoutBanner.vue'
+	import TestimonialSlider from '../components/TestimonialSlider.vue'
 
 	// Register your Builder components
 	const REGISTERED_COMPONENTS = [
-		{
-			component: HelloWorldComponent,
-			name: 'Hello World',
-			inputs: [
-				{
-					name: 'text',
-					type: 'string',
-					defaultValue: 'World'
-				},
-				{
-					name: 'width',
-					type: 'string'
-				}
-			]
-		},
 		{
 			component: HeroBanner,
 			name: 'Hero Banner',
@@ -217,6 +203,10 @@
 					]
 				}
 			]
+		},
+		{
+			component: TestimonialSlider,
+			name: 'Testimonial Slider'
 		}
 	]
 
