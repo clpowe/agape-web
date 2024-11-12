@@ -33,27 +33,49 @@
 			}
 		}
 	)
-
-	console.log(data.value)
 </script>
 
 <template>
 	<GridComponent element="section">
 		<div>
 			<div>
-				<h2 class="header2"> Testimonials </h2>
+				<AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
 			</div>
 
 			<swiper
-				:slides-per-view="3"
+				:slides-per-view="1"
+				:breakpoints="{
+					640: {
+						slidesPerView: 2
+					},
+					1024: {
+						slidesPerView: 3
+					}
+				}"
+				,
 				:space-between="50"
 				@swiper="onSwiper"
 				@slideChange="onSlideChange"
+				:centered-slides="true"
+				:loop="true"
 			>
-				<swiper-slide v-for="item in data">
-					<ListLinkItem :item="item"></ListLinkItem>
+				<swiper-slide
+					v-for="item in data"
+					v-slot="{ isActive, isPrev, isNext }"
+				>
+					<AppTestimonial :item />
 				</swiper-slide>
 			</swiper>
 		</div>
 	</GridComponent>
 </template>
+
+<style>
+	.swiper-slide-active {
+		transition: transform 0.5s ease-in-out;
+	}
+	.swiper-slide-prev,
+	.swiper-slide-next {
+		transform: scale(0.8);
+	}
+</style>

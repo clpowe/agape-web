@@ -9,7 +9,8 @@
 			/>
 		</div>
 		<div v-else>Content not Found</div>
-		<CarouselSlider />
+		<LargeQuote />
+		<div class="mb-96"></div>
 	</div>
 </template>
 
@@ -20,8 +21,8 @@
 	import BannerTypeOne from '@/components/BannerTypeOne.vue'
 	import ListSection from '@/components/ListSection.vue'
 	import BreakoutBanner from '@/components/BreakoutBanner.vue'
-	import TestimonialSlider from '../components/TestimonialSlider.vue'
-
+	import TestimonialSlider from '@/components/TestimonialSlider.vue'
+	import ContentOne from '@/components/ContentOne.vue'
 	// Register your Builder components
 	const REGISTERED_COMPONENTS = [
 		{
@@ -108,6 +109,11 @@
 							type: 'string'
 						}
 					]
+				},
+				{
+					name: 'image',
+					type: 'file',
+					allowedFileTypes: ['jpg', 'png', 'gif', 'svg']
 				}
 			]
 		},
@@ -197,6 +203,11 @@
 								{
 									name: 'url',
 									type: 'string'
+								},
+								{
+									name: 'image',
+									type: 'file',
+									allowedFileTypes: ['svg']
 								}
 							]
 						}
@@ -207,6 +218,63 @@
 		{
 			component: TestimonialSlider,
 			name: 'Testimonial Slider'
+		},
+		{
+			component: ContentOne,
+			name: 'Content One',
+			inputs: [
+				{
+					name: 'title',
+					type: 'string'
+				},
+				{
+					name: 'maincontent',
+					type: 'richText'
+				},
+				{
+					name: 'image',
+					type: 'file',
+					allowedFileTypes: ['jpg', 'png', 'gif', 'svg']
+				},
+				{
+					name: 'showCTA',
+					type: 'boolean'
+				},
+				{
+					name: 'primaryCTA',
+					type: 'object',
+					subFields: [
+						{
+							name: 'text',
+							type: 'string'
+						},
+						{
+							name: 'url',
+							type: 'string'
+						}
+					]
+				},
+				{
+					name: 'sections',
+					type: 'list',
+					subFields: [
+						{
+							name: 'section',
+							type: 'object',
+							subFields: [
+								{
+									name: 'title',
+									type: 'string'
+								},
+								{
+									name: 'content',
+									type: 'richText'
+								}
+							]
+						}
+					]
+				}
+			]
 		}
 	]
 

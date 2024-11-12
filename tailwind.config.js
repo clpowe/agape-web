@@ -16,11 +16,12 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				gilda: ['Gilda Display', 'serif'],
-				helvetica: ['Helvetica', 'sans-serif']
+				gilda: ['Bodoni Moda', 'serif'],
+				helvetica: ['Noto Sans', 'sans-serif']
 			},
 			fontSize: {
-				h1clamp: 'clamp(2.5rem,1px + 6vw,4.5rem)'
+				h1clamp: 'clamp(2.5rem,1px + 5vw,3.5rem)',
+				h2clamp: 'clamp(2rem,1px + 4vw,3rem)'
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -89,5 +90,5 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [animate]
+	plugins: [animate, require('@tailwindcss/typography')]
 }

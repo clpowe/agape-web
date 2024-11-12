@@ -7,3 +7,5 @@
 		content: string
 	}>()
 </script>
+
+<style scoped></style>

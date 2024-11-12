@@ -4,7 +4,7 @@
 		url: string
 	}
 
-	const props = defineProps<{
+	defineProps<{
 		title: string
 		image?: string
 		content?: string
@@ -17,32 +17,38 @@
 <template>
 	<GridComponent element="section">
 		<div
-			class="grid h-screen max-h-[800px] grid-rows-2 md:grid-rows-1 md:grid-cols-2 overflow-clip"
+			class="grid h-screen max-h-[800px] grid-rows-2 lg:grid-rows-1 lg:grid-cols-5 overflow-clip"
 		>
-			<div class="mt-auto grid gap-3 md:gap-6 p-4 md:p-8">
-				<h1
-					class="text-h1clamp leading-none font-gilda capitalize text-balance"
+			<div
+				class="mt-auto grid gap-3 md:gap-6 p-4 md:p-8 col-span-full lg:col-span-3 lg:mb-16"
+			>
+				<AppTypography
+					tag="h1"
+					variant="heading-variable-large"
+					class="capitalize"
 				>
 					{{ title }}
-				</h1>
+				</AppTypography>
 
 				<AppContent v-if="content" :content="content" />
 
 				<div v-if="showCTA" class="flex gap-2">
-					<AppButton as-child>
+					<AppButton as-child size="xl">
 						<NuxtLink v-if="primaryCTA?.text" :to="primaryCTA.url"
 							>{{ primaryCTA.text }}
 						</NuxtLink>
 					</AppButton>
-					<AppButton variant="outline" as-child>
+					<AppButton variant="outline" as-child size="xl">
 						<NuxtLink v-if="secondaryCTA?.text" :to="secondaryCTA.url"
 							>{{ secondaryCTA.text }}
 						</NuxtLink>
 					</AppButton>
 				</div>
 			</div>
-			<div class="grid grid-cols-3 grid-rows-3">
-				<div
+			<div
+				class="grid grid-cols-3 grid-rows-3 col-span-full lg:col-start-4 lg:col-end-6"
+			>
+				<!-- <div
 					class="row-end-4 col-start-1 z-10 w-[250px] h-auto bg-amber-300 p-4 self-end"
 				>
 					<p class="text-2xl font-gilda leading-none">
@@ -51,7 +57,7 @@
 					<AppButton as-child>
 						<NuxtLink to="team-prayer">Team Prayer</NuxtLink>
 					</AppButton>
-				</div>
+				</div> -->
 				<NuxtImg
 					:src="image"
 					fit="cover"

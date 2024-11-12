@@ -19,7 +19,7 @@
 
 <style>
 	:root {
-		--_hue: 24.64;
+		--_hue: 25.71;
 		--_easing: cubic-bezier(0.66, -0.2, 0.27, 1.15);
 		--_transitonSpeed: 400ms;
 

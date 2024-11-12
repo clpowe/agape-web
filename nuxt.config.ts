@@ -22,7 +22,8 @@ export default defineNuxtConfig({
 		'nuxt-svgo',
 		'@nuxtjs/tailwindcss',
 		'shadcn-nuxt',
-		'@builder.io/sdk-vue/nuxt'
+		'@builder.io/sdk-vue/nuxt',
+		'@nuxt/icon'
 	],
 
 	app: {

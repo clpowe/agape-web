@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<h2 class="header2" :class="{ 'header2-lg': lgText }">
+		<AppTypography tag="h2" :variant="text">
 			{{ title }}
-		</h2>
+		</AppTypography>
 		<div v-if="showCTA" class="flex gap-2">
 			<AppButton as-child>
 				<NuxtLink v-if="primaryCTA?.text" :to="primaryCTA.url"
@@ -19,12 +19,14 @@
 		url: string
 	}
 
-	defineProps<{
+	const props = defineProps<{
 		title: string
 		showCTA?: boolean
 		primaryCTA?: Link
 		lgText?: boolean
 	}>()
+
+	const text = computed(() => (props.lgText ? 'heading' : 'heading-large'))
 </script>
 
 <style scoped></style>
