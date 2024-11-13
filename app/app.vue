@@ -7,6 +7,25 @@
 			class: 'font-helvetica antialiased'
 		}
 	})
+const fetchDataWithCache = async (url: string) => {
+	const cacheKey = `cache_${url}`;
+	const cachedData = localStorage.getItem(cacheKey);
+	const cacheTime = localStorage.getItem(`${cacheKey}_time`);
+	const now = new Date().getTime();
+
+	if (cachedData && cacheTime && now - parseInt(cacheTime) < 20 * 60 * 1000) {
+		return JSON.parse(cachedData);
+	}
+
+	const response = await fetch(url);
+	const data = await response.json();
+
+	localStorage.setItem(cacheKey, JSON.stringify(data));
+	localStorage.setItem(`${cacheKey}_time`, now.toString());
+
+	return data;
+};
+
 </script>
 
 <template>
