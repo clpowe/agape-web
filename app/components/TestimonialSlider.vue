@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
@@ -26,9 +26,19 @@ const { data } = await useAsyncData(
   },
 );
 
+console.log(data);
+
+const carouselRef = useTemplateRef("carouselRef");
+
 function next() {
-  //swiperEL.value.slideNext();
+  carouselRef.value?.next();
 }
+
+const sliderConfig = {
+  itemsToShow: 2.5,
+  wrapAround: true,
+  transition: 500,
+};
 </script>
 
 <template>
@@ -38,15 +48,54 @@ function next() {
         <AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
       </div>
       <AppButton @click="next" class="swiper-button-next">next</AppButton>
-      <ClientOnly>
-        <carousel ref="swiperEl" :items-to-show="1.5">
-          <slide v-for="item in data" :key="item.text">
-            <AppTestimonial :item :key="item.text" />
-          </slide>
-        </carousel>
-      </ClientOnly>
+
+      <Carousel ref="carouselRef" v-bind="sliderConfig">
+        <Slide v-for="item in data" :key="item.text">
+          <AppTestimonial class="carousel__item" :item />
+        </Slide>
+      </Carousel>
     </div>
   </GridComponent>
 </template>
 
-<style></style>
+<style>
+.carousel__slide {
+  padding: 5;
+}
+
+.carousel__viewport {
+  perspective: 2000px;
+}
+
+.carousel__track {
+  transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+  transition: 0.5s;
+}
+
+.carousel__slide {
+  opacity: 0.9;
+  transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active ~ .carousel__slide {
+  transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+  opacity: 1;
+  transform: rotateY(-10deg) scale(0.95);
+}
+
+.carousel__slide.carousel__slide--next {
+  opacity: 1;
+  transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+  opacity: 1;
+  transform: rotateY(0) scale(1);
+}
+</style>

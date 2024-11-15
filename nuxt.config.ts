@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       builderApiKey: process.env.NUXT_PUBLIC_BUILDER_API_KEY,
     },
   },
+  plugins: ["@/plugins/registerSwiper.ts"],
   modules: [
     "@nuxt/test-utils/module",
     "@nuxt/fonts",
