@@ -1,81 +1,52 @@
 <script setup lang="ts">
-	import { fetchEntries } from '@builder.io/sdk-vue'
-	import { Swiper, SwiperSlide, useSwiper } from 'swiper/vue'
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
-	// Import Swiper styles
-	import 'swiper/css'
+import { fetchEntries } from "@builder.io/sdk-vue";
 
-	const onSwiper = (swiper: any) => {
-		console.log(swiper)
-	}
-	const onSlideChange = () => {
-		console.log('slide change')
-	}
+const config = useRuntimeConfig();
 
-	const config = useRuntimeConfig()
+const { data } = await useAsyncData(
+  "testimonials",
+  () =>
+    fetchEntries({
+      model: "testimonials",
+      apiKey: config.public.builderApiKey,
+    }),
+  {
+    transform: (data) => {
+      const res = [];
+      if (!data) return;
+      for (const item of data) {
+        res.push({ text: item.data?.name, content: item.data?.testimonial });
+      }
 
-	const { data } = await useAsyncData(
-		'testimonials',
-		() =>
-			fetchEntries({
-				model: 'testimonials',
-				apiKey: config.public.builderApiKey
-			}),
-		{
-			transform: (data) => {
-				const res = []
-				if (!data) return
-				for (const item of data) {
-					res.push({ text: item.data?.name, content: item.data?.testimonial })
-				}
+      return res;
+    },
+  },
+);
 
-				return res
-			}
-		}
-	)
+function next() {
+  //swiperEL.value.slideNext();
+}
 </script>
 
 <template>
-	<GridComponent element="section">
-		<div>
-			<div>
-				<AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
-			</div>
-
-			<swiper
-				:slides-per-view="1"
-				:breakpoints="{
-					640: {
-						slidesPerView: 2
-					},
-					1024: {
-						slidesPerView: 3
-					}
-				}"
-				,
-				:space-between="50"
-				@swiper="onSwiper"
-				@slideChange="onSlideChange"
-				:centered-slides="true"
-				:loop="true"
-			>
-				<swiper-slide
-					v-for="item in data"
-					v-slot="{ isActive, isPrev, isNext }"
-				>
-					<AppTestimonial :item />
-				</swiper-slide>
-			</swiper>
-		</div>
-	</GridComponent>
+  <GridComponent element="section">
+    <div>
+      <div>
+        <AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
+      </div>
+      <AppButton @click="next" class="swiper-button-next">next</AppButton>
+      <ClientOnly>
+        <carousel ref="swiperEl" :items-to-show="1.5">
+          <slide v-for="item in data" :key="item.text">
+            <AppTestimonial :item :key="item.text" />
+          </slide>
+        </carousel>
+      </ClientOnly>
+    </div>
+  </GridComponent>
 </template>
 
-<style>
-	.swiper-slide-active {
-		transition: transform 0.5s ease-in-out;
-	}
-	.swiper-slide-prev,
-	.swiper-slide-next {
-		transform: scale(0.8);
-	}
-</style>
+<style></style>
