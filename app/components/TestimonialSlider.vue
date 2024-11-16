@@ -40,9 +40,21 @@ function prev() {
 
 
 const sliderConfig = {
-  itemsToShow: 2.5,
+  itemsToShow: 1,
   wrapAround: true,
   transition: 500,
+  breakpointMode: 'viewport',
+  breakpoints: {
+    400: {
+      itemsToShow: 1,
+    },
+    600: {
+      itemsToShow: 2,
+    },
+    1000: {
+      itemsToShow: 3,
+    }
+  }
 };
 </script>
 
@@ -66,7 +78,7 @@ const sliderConfig = {
 
 <style>
 .carousel__slide {
-  padding: 5;
+  padding: 2rem;
 }
 
 .carousel__viewport {
@@ -91,17 +103,17 @@ const sliderConfig = {
 }
 
 .carousel__slide--prev {
-  opacity: 1;
-  transform: rotateY(-10deg) scale(0.95);
+  opacity: .5;
+  transform: rotateY(-10deg) scale(0.90);
 }
 
 .carousel__slide.carousel__slide--next {
-  opacity: 1;
-  transform: rotateY(10deg) scale(0.95);
+  opacity: .5;
+  transform: rotateY(10deg) scale(0.90);
 }
 
 .carousel__slide--active {
   opacity: 1;
-  transform: rotateY(0) scale(1);
+  transform: rotateY(0) scale(1.2);
 }
 </style>
