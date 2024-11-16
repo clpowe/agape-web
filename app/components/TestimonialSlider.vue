@@ -34,6 +34,11 @@ function next() {
   carouselRef.value?.next();
 }
 
+function prev() {
+  carouselRef.value?.prev();
+}
+
+
 const sliderConfig = {
   itemsToShow: 2.5,
   wrapAround: true,
@@ -48,6 +53,7 @@ const sliderConfig = {
         <AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
       </div>
       <AppButton @click="next" class="swiper-button-next">next</AppButton>
+      <AppButton @click="prev" class="swiper-button-prev">prev</AppButton>
 
       <Carousel ref="carouselRef" v-bind="sliderConfig">
         <Slide v-for="item in data" :key="item.text">
@@ -80,7 +86,7 @@ const sliderConfig = {
   transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active ~ .carousel__slide {
+.carousel__slide--active~.carousel__slide {
   transform: rotateY(20deg) scale(0.9);
 }
 
