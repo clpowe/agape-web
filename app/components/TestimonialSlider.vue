@@ -61,11 +61,13 @@ const sliderConfig = {
 <template>
   <GridComponent element="section">
     <div>
-      <div>
+      <div class="flex justify-between gap-4 items-center flex-wrap w-full">
         <AppTypography tag="h2" variant="heading">Testimonials</AppTypography>
+        <div class="flex gap-4">
+          <AppButton @click="next" class="swiper-button-next">next</AppButton>
+          <AppButton @click="prev" class="swiper-button-prev">prev</AppButton>
+        </div>
       </div>
-      <AppButton @click="next" class="swiper-button-next">next</AppButton>
-      <AppButton @click="prev" class="swiper-button-prev">prev</AppButton>
 
       <Carousel ref="carouselRef" v-bind="sliderConfig">
         <Slide v-for="item in data" :key="item.text">
