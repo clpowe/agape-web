@@ -1,10 +1,6 @@
 <template>
-  <li :key="item.text" class="bg-zinc-100 px-6 py-8 h-72">
-    <div
-      v-if="item.url"
-      :to="item.url"
-      class="text-balance flex flex-col justify-between h-full"
-    >
+  <li :key="item.text" class="bg-customBG px-6 py-8 h-72">
+    <div v-if="item.url" :to="item.url" class="text-balance flex flex-col justify-between h-full">
       <Icon name="ph:books-thin" class="w-10 h-10" />
       <div>
         <AppTypography tag="h3" variant="heading-small" class="mb-2">
@@ -13,13 +9,9 @@
         <AppContent v-if="item.content" :content="item.content" />
       </div>
 
-      <AppButton
-        variant="link"
-        class="self-start p-0 text-base flex gap-2"
-        v-if="item.url"
-        :to="item.url"
-        >Learn More <Icon name="ph:arrow-circle-up-right-light" class="w-8 h-8"
-      /></AppButton>
+      <AppButton variant="link" class="self-start p-0 text-base flex gap-2" v-if="item.url" :to="item.url">Learn More
+        <Icon name="ph:arrow-circle-up-right-light" class="w-8 h-8" />
+      </AppButton>
     </div>
 
     <div v-else class="text-balance">

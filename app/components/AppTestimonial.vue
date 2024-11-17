@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-auto">
-    <div class="flex flex-col bg-[#f8f4f1] p-4 dark:bg-neutral-900">
+    <div class="flex flex-col bg-customBG p-4 dark:bg-neutral-900">
       <div class="flex-auto p-4 md:p-6">
         <AppTypography tag="p" variant="text" class="italic text-gray-800">
           {{ item.content }}

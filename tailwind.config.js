@@ -24,6 +24,7 @@ module.exports = {
 				h2clamp: 'clamp(2rem,1px + 4vw,3rem)'
 			},
 			colors: {
+				customBG: '#f8f4f1',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
