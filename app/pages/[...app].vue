@@ -283,6 +283,11 @@ const REGISTERED_COMPONENTS = [
 			{
 				name: 'subtitle',
 				type: 'string'
+			},
+			{
+				name: 'color',
+				type: 'string',
+				enum: ['blue', 'green', 'yellow', 'purple', 'pink']
 			}
 		]
 	}

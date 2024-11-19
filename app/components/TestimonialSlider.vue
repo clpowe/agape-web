@@ -26,7 +26,6 @@ const { data } = await useAsyncData(
   },
 );
 
-console.log(data);
 
 const carouselRef = useTemplateRef("carouselRef");
 
