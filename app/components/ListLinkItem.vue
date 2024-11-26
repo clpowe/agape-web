@@ -3,7 +3,7 @@
     <div v-if="item.url" :to="item.url" class="text-balance flex flex-col justify-between h-full">
       <Icon name="ph:books-thin" class="w-10 h-10" />
       <div>
-        <AppTypography tag="h3" variant="heading-small" class="mb-2">
+        <AppTypography tag="h3" variant="heading-medium" class="mb-2">
           {{ item.text }}
         </AppTypography>
         <AppContent v-if="item.content" :content="item.content" />

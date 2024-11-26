@@ -1,11 +1,15 @@
 <template>
-	<AppHeader />
-	<slot />
-	<footer>
-		<p>©Agape Christian Bar Prep {{ new Date().getFullYear() }}</p>
-	</footer>
+	<div class="parent">
+		<AppHeader />
+		<slot />
+		<AppFooter />
+	</div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.parent {
+	grid-template-rows: auto 1fr auto
+}
+</style>

@@ -79,7 +79,7 @@ const sliderConfig = {
 
 <style>
 .carousel__slide {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .carousel__viewport {
@@ -96,25 +96,19 @@ const sliderConfig = {
 
 .carousel__slide {
   opacity: 0.9;
-  transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active~.carousel__slide {
-  transform: rotateY(20deg) scale(0.9);
-}
+.carousel__slide--active~.carousel__slide {}
 
 .carousel__slide--prev {
   opacity: .5;
-  transform: rotateY(-10deg) scale(0.90);
 }
 
 .carousel__slide.carousel__slide--next {
   opacity: .5;
-  transform: rotateY(10deg) scale(0.90);
 }
 
 .carousel__slide--active {
   opacity: 1;
-  transform: rotateY(0) scale(1.2);
 }
 </style>

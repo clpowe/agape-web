@@ -17,7 +17,8 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				gilda: ['Bodoni Moda', 'serif'],
-				helvetica: ['Noto Sans', 'sans-serif']
+				helvetica: ['Noto Sans', 'sans-serif'],
+				crimson: ['Crimson Text', 'serif']
 			},
 			fontSize: {
 				h1clamp: 'clamp(2.5rem,1px + 5vw,3.5rem)',
