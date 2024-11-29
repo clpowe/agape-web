@@ -95,5 +95,11 @@ const { data } = await useAsyncData('nav-links', () =>
 	}
 }
 
-.footer-section {}
+.footer-section {
+	@apply flex flex-col gap-2;
+
+	ul {
+		@apply flex flex-col gap-2;
+	}
+}
 </style>
