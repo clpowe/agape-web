@@ -5,7 +5,6 @@
 				:customComponents="REGISTERED_COMPONENTS" />
 		</div>
 		<div v-else>Content not Found</div>
-		<div class="mb-96"></div>
 	</div>
 </template>
 

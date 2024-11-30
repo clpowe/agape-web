@@ -13,23 +13,22 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex h-auto ">
+  <div class="flex h-full ">
     <div class="flex flex-col bg-customBG p-4 dark:bg-neutral-900">
-      <div class="flex-auto p-4 md:p-6">
-        <AppTypography tag="p" variant="text" class="font-xs text-left text-gray-800">
-          {{ item.content }}
-        </AppTypography>
-      </div>
-
-      <AppDivider />
       <div class="p-4 rounded-b-xl md:px-7 dark:bg-neutral-800">
-        <div class="flex items-center gap-x-3">
+        <div class="flex text-left gap-x-3">
           <div class="grow">
-            <p class="text-sm sm:text-base font-emibold text-gray-800 dark:text-neutral-200">
+            <AppTypography tag="p" variant="heading-small">
               {{ item.text }}
-            </p>
+            </AppTypography>
           </div>
         </div>
+      </div>
+      <AppDivider class="mx-6" />
+      <div class="flex-auto p-4 md:p-6">
+        <AppTypography tag="p" variant="text" class="max-w-xs font-xs text-left text-gray-800">
+          {{ item.content }}
+        </AppTypography>
       </div>
     </div>
   </div>

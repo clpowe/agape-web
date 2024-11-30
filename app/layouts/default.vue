@@ -10,6 +10,7 @@
 
 <style scoped>
 .parent {
-	grid-template-rows: auto 1fr auto
+	@apply bg-[#fffbf8];
+	grid-template-rows: auto 1fr auto;
 }
 </style>
