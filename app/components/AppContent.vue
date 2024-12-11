@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-4">
-    <div v-html="content" class=" max-w-[60ch]"></div>
+    <div v-html="content" class="max-w-[60ch] text-xl" v-bind="$attrs"></div>
   </div>
 </template>
 
