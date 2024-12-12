@@ -1,15 +1,26 @@
 <template>
-  <li :key="item.text" class="bg-customBG px-6 py-8 h-72">
-    <div v-if="item.url" :to="item.url" class="text-balance flex flex-col justify-between h-full">
-      <Icon name="ph:books-thin" class="w-10 h-10" />
-      <div>
-        <AppTypography tag="h3" variant="heading-medium" class="mb-2">
-          {{ item.text }}
-        </AppTypography>
-        <AppContent v-if="item.content" :content="item.content" />
+  <li :key="item.text" class="bg-customBG px-6 py-8">
+    <div
+      w
+      v-if="item.url"
+      :to="item.url"
+      class="text-balance flex flex-col h-full justify-between items-start"
+    >
+      <div class="mt-auto">
+        <Icon name="ph:books-thin" class="w-10 h-10 mb-10" />
+        <div class="mb-8">
+          <AppTypography tag="h3" variant="heading-medium" class="mb-4">
+            {{ item.text }}
+          </AppTypography>
+          <AppContent v-if="item.content" :content="item.content" />
+        </div>
       </div>
-
-      <AppButton variant="link" class="self-start p-0 text-base flex gap-2" v-if="item.url" :to="item.url">Learn More
+      <AppButton
+        variant="link"
+        class="mt-auto p-0 text-base"
+        v-if="item.url"
+        :to="item.url"
+        >Learn More
         <Icon name="ph:arrow-circle-up-right-light" class="w-8 h-8" />
       </AppButton>
     </div>
