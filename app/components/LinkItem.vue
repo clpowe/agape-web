@@ -1,20 +1,13 @@
 <template>
-  <li class="bg-customBG min-h-96 relative grid">
-    <NuxtImg
-      v-if="item.image"
-      :src="item.image"
-      class="w-full col-start-1 col-end-2 row-start-1 z-1"
-    />
-    <NuxtLink
-      v-if="item.url"
-      :to="item.url"
-      class="text-balance p-6 text-white z-2 grid h-full items-start justify-end col-start-1 col-end-2 row-start-1 content-end"
-    >
+  <li class="subgrid bg-customBG min-h-96 relative grid">
+    <NuxtImg v-if="item.image" :src="item.image" class="w-full col-start-1 col-end-2 row-start-1 z-1" />
+    <NuxtLink v-if="item.url" :to="item.url"
+      class="text-balance p-6 text-white z-2 grid h-full items-start justify-end col-start-1 col-end-2 row-start-1 content-end">
       <div class="z-2">
         <AppTypography tag="h3" variant="heading-medium" class="z-2">
           {{ item.text }}
         </AppTypography>
-        <AppDivider class="w-full py-3 z-2 ::before:border-white" />
+        <AppDivider color="white" class="w-full py-3 z-2" />
         <AppContent v-if="item.content" :content="item.content" />
       </div>
     </NuxtLink>
@@ -34,4 +27,4 @@ const props = defineProps<{
 }>();
 </script>
 
-<style scoped></style>
+<style></style>
