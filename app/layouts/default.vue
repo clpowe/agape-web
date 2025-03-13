@@ -1,7 +1,9 @@
 <template>
-	<div class="parent">
+	<div class="min-h-screen flex flex-col bg-[#fffbf8]">
 		<AppHeader />
-		<slot />
+		<main class="flex-grow">
+			<slot />
+		</main>
 		<AppFooter />
 	</div>
 </template>
@@ -9,8 +11,5 @@
 <script setup lang="ts"></script>
 
 <style scoped>
-.parent {
-	@apply bg-[#fffbf8];
-	grid-template-rows: auto 1fr auto;
-}
+/* The flex-col and flex-grow classes ensure footer stays at bottom */
 </style>
